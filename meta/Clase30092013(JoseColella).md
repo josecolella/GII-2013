@@ -53,7 +53,11 @@ Usando las tablas de precios de servicios de alojamiento en Internet y de provee
 
 > La información sobre los precios y características hardware se han conseguido de los
 > siguientes lugares:
+>
 > - [precios][3]
+> - [hardware][4]
+>
+
 
 
 
