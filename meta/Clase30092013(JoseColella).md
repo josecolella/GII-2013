@@ -36,6 +36,24 @@ Consultar en el catálogo de alguna tienda de informática el precio de un orden
 
 Usando las tablas de precios de servicios de alojamiento en Internet y de proveedores de servicios en la nube, Comparar el coste durante un año de un ordenador con un procesador estándar (escogerlo de forma que sea el mismo tipo de procesador en los dos vendedores) y con el resto de las características similares (tamaño de disco duro equivalente a transferencia de disco duro) si la infraestructura comprada se usa sólo el 1% o el 10% del tiempo.
 
+> Las empresas principales utilizadas para hacer las comparaciones de precio
+> son Amazon Web Services y Microsoft Azure. 
+> Amazon Web Service proporciona la habilidad depagar en base al uso de la instancia
+> pero tambien esta la opción de reservar una instancia por un año para recibir precios reducidos 
+> al cambio de poner más dinero al comienzo. Los procesadoes de amazon web services 
+> suelen ser Intel Xeon, aunque no especifican que modelo para instancias generales.
+>
+> 
+> Para una instancia de media utilización de medio tamaño (1 vCPU, 3.75 GB SSD), localizada en Virginia se tiene que
+> pagar al frente $277. Por hora se paga $0.042, que significa que si la instancia esta corriendo todo el dia, al final del año tienes que pagar 24*0.042*365 = $367.92.
+>
+> Si se útiliza sólo el 1% del tiempo se paga $3.67.
+
+> Si se útiliza sólo el 10% del tiempo se paga $36.79.
+
+> La información sobre los precios y características hardware se han conseguido de los
+> siguientes lugares:
+> - [precios][3]
 
 
 
@@ -47,3 +65,5 @@ Usando las tablas de precios de servicios de alojamiento en Internet y de provee
 
 [1]: http://goo.gl/phXHBh
 [2]: http://goo.gl/yHhoS9
+[3]: http://aws.amazon.com/ec2/pricing/
+[4]: http://aws.amazon.com/ec2/instance-types/instance-details/
