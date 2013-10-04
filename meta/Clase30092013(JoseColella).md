@@ -163,6 +163,8 @@ un fichero a comprimir, y lo comprime. Finalmente, le enseña un mensaje de éxi
 > El programa ejecutable se puede conseguir [aqui](https://github.com/josecolella/GII-2013/blob/master/meta/Ejercicio3.py)
 > y el fichero comprimido se puede conseguir [aqui](https://github.com/josecolella/GII-2013/blob/master/meta/cde-Ejercicio3.tar.gz)
 
+*Atención: El CDE no funciona cuando migramos el paquete de un sistema de 64 bit a 32 bit*
+
 [1]: http://goo.gl/phXHBh
 [2]: http://goo.gl/yHhoS9
 [3]: http://aws.amazon.com/ec2/pricing/
