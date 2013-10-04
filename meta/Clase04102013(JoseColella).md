@@ -26,7 +26,7 @@ Ejercicios
 
 > __*Avanzado*__
 >
->- Instalarlo y crear una aplicación
+>- Instalarlo y crear una aplicación contenedorizada
 >
 > Para poder instalar docker tenemos que tener unos requisitos exigidos por los creadores de 
 > Docker. Los requisitos son:
@@ -39,7 +39,15 @@ Ejercicios
 > sudo apt-get install linux-image-generic-lts-raring linux-headers-generic-lts-raring
 >```
 
+> Después de ejecutar dichas instrucciones hay que reiniciar el sistema. Ahora hay que agregar el repostorio de docker. Siguiendo los comandos proporcionados por el [sitio web](http://docs.docker.io/en/latest/installation/ubuntulinux/), instalamos docker en nuestro sistema.
 
+> Para comprobar que se ha instalado ejecutamos el siguiente comando:
+
+> ```sh
+> sudo docker run -i -t ubuntu /bin/bash
+> ```
+
+> El comando anterior corre un shell bash en una imagen de ubuntu
 
 ###Ejercicio 5
 
