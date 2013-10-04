@@ -42,7 +42,7 @@ El comando para instalar git es:
  
 > Para verificar que se haya instalado usamos el comando:
 
->```sh
+> ```sh
 >   git --help
 > ```
 
@@ -59,10 +59,13 @@ El comando para instalar git es:
 
 > Cuando haces click sobre el botón *"Create repository"* se crea el proyecto en GitHub. 
 
-> Ahora necesitamos crear un lugar local que tenga el contenido del directorio alojado en Github. Esto se hace usando el comando ```sh git clone```.
+> Ahora necesitamos crear un lugar local que tenga el contenido del directorio alojado en Github. Esto se hace usando el comando 
+> ```sh 
+>git clone [options] [--] <repo> [<dir>]
+```
 > En mi caso el comando que he tenido que ejecutar para crear una copia local del repositorio es:
 
-> * ```sh
+> ```sh
 > git clone https://github.com/josecolella/testRepo.git 
 > ```
 
@@ -70,7 +73,7 @@ El comando para instalar git es:
 
 > Para modificar el readme y subir el fichero modificado usamos un editor de texto para agregar contenido a dicho fichero. 
 >
-> - ```sh 
+> ```sh 
 > vim README.md
 > ```
 
@@ -79,9 +82,10 @@ El comando para instalar git es:
 >Esto se hace usando los siguientes comandos:
 
 >  ```sh
-git commit -a -m "Agregado descripción en README" 
-git push
- ```
+> git commit -a -m "Agregado descripción en README" 
+> git push
+> ```
+>
 > Finalmente, si se revisa el repositorio en GitHub, se puede comprobar que dicho fichero ha sido actualizado.
 
  
