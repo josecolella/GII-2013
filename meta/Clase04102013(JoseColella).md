@@ -27,6 +27,19 @@ Ejercicios
 > __*Avanzado*__
 >
 >- Instalarlo y crear una aplicación
+>
+> Para poder instalar docker tenemos que tener unos requisitos exigidos por los creadores de 
+> Docker. Los requisitos son:
+>    
+>   - Un kernel 3.8 que contiene AUFS, ZFS, y addiciones de invitado de virtual box.
+> 
+> Para poder instalar el kernel se ejecuta el siguiente comando:
+
+> ```sh 
+> sudo apt-get install linux-image-generic-lts-raring linux-headers-generic-lts-raring
+>```
+
+
 
 ###Ejercicio 5
 
