@@ -54,8 +54,15 @@ El comando para instalar git es:
 > Para crear un proyecto en GitHub, lo primero
 > que hay que hacer es crear un nuevo repositorio.
 > Esto lo hacemos usando el boton de crearse un nuevo repository como se puede ver en la siguiente imagen.
->
-> Después tienes que darle un nombre a dicho repositorio, y una descripción opcional. Para que el proyecto tenga un README, hacemos click en la caja que dice *"Initialize this repository with a README"*.
+> 
+
+   ![Crear Nuevo Respositorio](https://raw.github.com/josecolella/GII-2013/master/meta/Screenshots/Screen%20Shot%202013-10-01%20at%2017.08.41.png) 
+ 
+> Después tienes que darle un nombre a dicho repositorio, y una descripción opcional. 
+> Para que el proyecto tenga un README, hacemos click en la caja que dice *"Initialize this repository with a README"*.
+> En la siguiente imagen podemos ver los pasos a seguir:
+
+   ![Crear nuevo proyecto e inicializar con README](https://raw.github.com/josecolella/GII-2013/master/meta/Screenshots/Screen%20Shot%202013-10-01%20at%2017.11.22.png)
 
 > Cuando haces click sobre el botón *"Create repository"* se crea el proyecto en GitHub. 
 
@@ -77,9 +84,9 @@ El comando para instalar git es:
 > vim README.md
 > ```
 
->Después de cambiar el contenido del fichero, para que dicho cambio sea reflejado en el repositorio de GitHub tenemos que agregarlo al *staging area*, ponerle un mensaje de commit, y mandarlo.
+> Después de cambiar el contenido del fichero, para que dicho cambio sea reflejado en el repositorio de GitHub tenemos que agregarlo al *staging area*, ponerle un mensaje de commit, y mandarlo.
 
->Esto se hace usando los siguientes comandos:
+> Esto se hace usando los siguientes comandos:
 
 >  ```sh
 > git commit -a -m "Agregado descripción en README" 
