@@ -114,6 +114,54 @@ mediana. La médiana tiene 2 CPU de 1.6 Ghz, y 3.5 GB RAM. Las características 
 > Como se puede ver por los calculos Amazon Web Services proporciona 
 > un precio más bajo. 
 
+### Ejercicio 3: Segunda Parte
+
+>Para este ejercicio, primero tenemos que tener los paquetes de CDE para >poder empaquetar el programa creado en python. 
+>
+>Para instalar CDE en la máquina Linux se sigue los siguientes pasos:
+ 
+ '''sh
+git clone git://github.com/pgbovine/CDE.git
+cd CDE
+make
+'''
+
+> Después de haberse creado el programa de python, es muy importante que
+> se haga ejecutable usando chmod.
+> En mi caso he ejecutado el siguiente comando:
+
+'''sh
+chmod +x Ejercicio3.py
+'''
+
+> Para que cde sepa cuales son las dependencias necesarias para poder 
+> ejecutar el programa, necesita ejecutar dicho programa. En mi caso se requiere python 3. 
+> El comando ejecutado es:
+
+'''sh
+./cde ./Ejercicio3.py
+'''
+
+> Ahora para que otra persona pueda ejecutar dicho programa empaquetamos dicho programa y lo comprimimos
+
+'''sh
+tar cfv cde-Ejercicio3.tar cde-package/
+gzip cde-Ejercicio3.tar
+'''
+
+> Si queremos que otros usuarios ejecuten dicho programa tienen que descomprimir el archivo y después pueden ejecutarlo
+ 
+'''sh
+tar -zxvf cde-Ejercicio3.tar.gz
+cde-package/home/josecolella/Desktop/Ejercicio3.py.cde
+'''
+
+> Cuando el usuario ejecuta dichos comandos deberían ver el programa ejecutandosé. El programa basicamente pregunta al usuario el nombre de 
+un fichero a comprimir, y lo comprime. Finalmente, le enseña un mensaje de éxito.
+
+
+> El programa ejecutable se puede conseguir [aqui](https://github.com/josecolella/GII-2013/blob/master/meta/Ejercicio3.py)
+> y el fichero comprimido se puede conseguir [aqui](https://github.com/josecolella/GII-2013/blob/master/meta/cde-Ejercicio3.tar.gz)
 
 [1]: http://goo.gl/phXHBh
 [2]: http://goo.gl/yHhoS9
