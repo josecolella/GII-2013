@@ -120,19 +120,19 @@ mediana. La médiana tiene 2 CPU de 1.6 Ghz, y 3.5 GB RAM. Las características 
 >
 >Para instalar CDE en la máquina Linux se sigue los siguientes pasos:
  
- '''sh
+ ```sh
 git clone git://github.com/pgbovine/CDE.git
 cd CDE
 make
-'''
+```
 
 > Después de haberse creado el programa de python, es muy importante que
 > se haga ejecutable usando chmod.
 > En mi caso he ejecutado el siguiente comando:
 
-'''sh
+```sh
 chmod +x Ejercicio3.py
-'''
+```
 
 > Para que cde sepa cuales son las dependencias necesarias para poder 
 > ejecutar el programa, necesita ejecutar dicho programa. En mi caso se requiere python 3. 
