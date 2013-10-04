@@ -138,23 +138,23 @@ chmod +x Ejercicio3.py
 > ejecutar el programa, necesita ejecutar dicho programa. En mi caso se requiere python 3. 
 > El comando ejecutado es:
 
-'''sh
+```sh
 ./cde ./Ejercicio3.py
-'''
+```
 
 > Ahora para que otra persona pueda ejecutar dicho programa empaquetamos dicho programa y lo comprimimos
 
-'''sh
+```sh
 tar cfv cde-Ejercicio3.tar cde-package/
 gzip cde-Ejercicio3.tar
-'''
+```
 
 > Si queremos que otros usuarios ejecuten dicho programa tienen que descomprimir el archivo y después pueden ejecutarlo
  
-'''sh
+```sh
 tar -zxvf cde-Ejercicio3.tar.gz
 cde-package/home/josecolella/Desktop/Ejercicio3.py.cde
-'''
+```
 
 > Cuando el usuario ejecuta dichos comandos deberían ver el programa ejecutandosé. El programa basicamente pregunta al usuario el nombre de 
 un fichero a comprimir, y lo comprime. Finalmente, le enseña un mensaje de éxito.
