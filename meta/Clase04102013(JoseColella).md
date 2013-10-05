@@ -210,12 +210,13 @@ conosido porque consume más recursos que otros editor por linea de comando.
 >   - memory.max-usage-in-bytes: Máxima memoria usada por el proceso en el grupo
 > Toda esta información esta explicada con más detalle [aquí](https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Resource_Management_Guide/sec-memory.html)
 
-                          | browser       | textEdior           | python       |
-                          | ------------- |:-------------:      | ------------:|
-cpuacct.usage             | 409996738     | 447980337           | 152670739    |
-cpuacct.stat              | user:34,sys:4 | user:34,sys:3       | user:12,sys:4|
-cpuacct.usage_percpu      | 206655546     | 351511754           | 66869739     |
-memory.max-usage-in-bytes | 5910528       | 7909376             | 9056256      |
 
 
+
+|               | browser       | textEditor    | python|
+| ------------- |:-------------:|:-------------:|-----: |
+| cpuacct.usage  | 409996738 | 447980337 | 152670739 
+| cpuacct.stat   | user:34,sys:4      |   user:34,sys:3  | user:12,sys:4
+| cpuacct.usage_percpu | 206655546      |    351511754  | 66869739 
+| memory.max-usage-in-bytes   | 5910528     |   7909376 | 9056256
 
