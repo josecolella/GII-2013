@@ -47,7 +47,12 @@ Ejercicios
 > sudo docker run -i -t ubuntu /bin/bash
 > ```
 
-> El comando anterior corre un shell bash en una imagen de ubuntu
+> El comando anterior ejecuta un shell bash en una imagen de ubuntu.
+
+> Ya instado docker, se puede crear la aplicación contenedorizada. 
+> La aplicación contenorizada será basada en una imagen para crear aplicaciones web en python
+
+
 
 ###Ejercicio 5
 
@@ -121,9 +126,34 @@ El comando para instalar git es:
 
     1. Crear diferentes grupos de control sobre un sistema operativo Linux.
     Ejecutar un uno de ellos el navegador, en otro un procesador de textos,
-    y en uno últiumo cualquier otro proceso. Comparar el uso de recursos de
+    y en uno último cualquier otro proceso. Comparar el uso de recursos de
     unos y otros durante un tiempo determinado.
     2. Calcular el coste real de uso de recursos de un ordenador teniendo
     en cuenta sus costes de amortización. Añadir los costes eléctricos
     correspondientes.
 
+> Para crear los grupos de control usamos 
+> ```sh cgcreate, cgexec, cgclassify``` 
+
+> cgroups proporciona la habilidad de gestionar recursos proporcionados por la cpu, memoria, y entrada/salida.
+> Tenemos dos opciones para los control de grupos. 
+>    1. Podemos crear los grupos al momento
+>    2. Usando el fichero /etc/cgconfig.conf podemos crear una configuración persistente qu esta cuando se reinicie el ordenador.
+
+> Para este experimento crearé tres grupos de control
+>   1. El primer grupo de control tiene limitaciones de memoria. En este grupo de control se ejecuta el navegador.
+>   2. El segundo grupo de control tiene limitaciones de CPU. En este grupo de control se ejecuta emacs y sublime text, que son editores de texto.
+>   3. El tercer grupo de control tiene limitaciones de CPU y memoria. En este grupo se ejecuta nautilus.
+
+> Los grupos los he creado con los siguientes comandos:
+> ```sh
+> sudo cgcreate -a $USER -g memory,cpu: primero
+> sudo cgcreate -a $USER -g memory,cpu: segundo
+> sudo cgcreate -a $USER -g memory,cpu: tercero
+> ```
+
+> Para limitar los recursos de la CPU para el segundo grupo se usa 
+el siguiente comando:
+
+> ```sh
+> echo 
