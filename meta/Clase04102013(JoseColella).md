@@ -28,14 +28,14 @@ Ejercicios
 >
 >- Instalarlo y crear una aplicación contenedorizada
 >
-> Para poder instalar docker tenemos que tener unos requisitos exigidos por los creadores de 
+> Para poder instalar docker tenemos que tener unos requisitos exigidos por los creadores de
 > Docker. Los requisitos son:
->    
+>
 >   - Un kernel 3.8 que contiene AUFS, ZFS, y addiciones de invitado de virtual box.
-> 
+>
 > Para poder instalar el kernel se ejecuta el siguiente comando:
 
-> ```sh 
+> ```sh
 > sudo apt-get install linux-image-generic-lts-raring linux-headers-generic-lts-raring
 >```
 
@@ -49,7 +49,7 @@ Ejercicios
 
 > El comando anterior ejecuta un shell bash en una imagen de ubuntu.
 
-> Ya instado docker, se puede crear la aplicación contenedorizada. 
+> Ya instado docker, se puede crear la aplicación contenedorizada.
 > La aplicación contenorizada será basada en una imagen para crear aplicaciones web en python
 
 
@@ -132,11 +132,26 @@ El comando para instalar git es:
     en cuenta sus costes de amortización. Añadir los costes eléctricos
     correspondientes.
 
-> Para crear los grupos de control usamos 
-> ```sh cgcreate, cgexec, cgclassify``` 
+> Cgroups proporciona la habiidad de controlar cunatos recurosos puede
+> utilizar un programa, puede restringir acceso a recursos y puede monitorizar
+> los recursos del sistema.
+>
+> Para distribuciones como Ubuntu, hay que instalar los paquetes para
+trabajar con cgroups.
+> Para instalar cgroups se ejecuta el siguiente comando:
+>
+> ```sh
+> sudo apt-get install -y cgroup-bin
+> ```
+
+
+> Para crear los grupos de control usamos
+> ```sh
+> cgcreate, cgexec, cgclassify
+> ```
 
 > cgroups proporciona la habilidad de gestionar recursos proporcionados por la cpu, memoria, y entrada/salida.
-> Tenemos dos opciones para los control de grupos. 
+> Tenemos dos opciones para los control de grupos.
 >    1. Podemos crear los grupos al momento
 >    2. Usando el fichero /etc/cgconfig.conf podemos crear una configuración persistente qu esta cuando se reinicie el ordenador.
 
@@ -147,13 +162,60 @@ El comando para instalar git es:
 
 > Los grupos los he creado con los siguientes comandos:
 > ```sh
-> sudo cgcreate -a $USER -g memory,cpu: primero
-> sudo cgcreate -a $USER -g memory,cpu: segundo
-> sudo cgcreate -a $USER -g memory,cpu: tercero
+> sudo cgcreate -g memory,cpuacct:browser
+> sudo cgcreate -g memory,cpuacct:textEditor
+> sudo cgcreate -g memory,cpuacct:python
 > ```
 
-> Para limitar los recursos de la CPU para el segundo grupo se usa 
-el siguiente comando:
+> Para lanzar un proceso en un control de grupo usamos el comando:
+> ```sh
+> cgexec
+> ```
+
+> El comando toma como parametro el grupo de control y la aplicación a ejecutar
+> Para el primer grupo de control que ejecuta el navegador web se
+> ha ejecutado el siguiente comando:
 
 > ```sh
-> echo 
+> cgexec -g memory,cpu:browser lynx
+> ```
+
+> He optado por lynx, ya que es un navegador que no requiere ninguna GUI, como
+> Chrome y Firefox.
+
+> Para el segundo grupo que hay que analizar como consume recursos un editor de
+texto. He probado el comando con emacs, que es un editor de terminal. Pero además es
+conosido porque consume más recursos que otros editor por linea de comando.
+
+> El comando ejecutado es:
+
+> ```sh
+> cgexec -g memory,cpuacct:textEditor emacs
+> ```
+
+> Finalmente para el último grupo de control en el cual se esta analizando el
+> uso de CPU y memoria por parte de interprete del lenguaje python.
+
+> El comando para lanzar el programa al control de grupo es:
+
+> ```sh
+> cgexec -g memory,cpuacct:python python
+> ```
+
+> - **Análisis**
+> Para el análisis se comprueba principales las siguiente métricas:
+>   - cpuacct.usage: Tiempo de CPU consumid por las aplicaciones ejecutadas por el grupo
+>   - cpuacct.stat: Tiempo consumido por el modo usuario y el sistema
+>   - cpuacct.usage_percpu: tiempo (en nanosegundos) consumido por la CPU
+>   - memory.max-usage-in-bytes: Máxima memoria usada por el proceso en el grupo
+> Toda esta información esta explicada con más detalle [aquí](https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Resource_Management_Guide/sec-memory.html)
+
+                          | browser       | textEdior           | python       |
+                          | ------------- |:-------------:      | ------------:|
+cpuacct.usage             | 409996738     | 447980337           | 152670739    |
+cpuacct.stat              | user:34,sys:4 | user:34,sys:3       | user:12,sys:4|
+cpuacct.usage_percpu      | 206655546     | 351511754           | 66869739     |
+memory.max-usage-in-bytes | 5910528       | 7909376             | 9056256      |
+
+
+
