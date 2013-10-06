@@ -215,8 +215,15 @@ conosido porque consume más recursos que otros editor por linea de comando.
 
 > |               | browser       | textEditor    | python|
 > | ------------- |:-------------:|:-------------:|-----: |
-> | cpuacct.usage  | 409996738 | 447980337 | 152670739 
+> | cpuacct.usage  | 409996738 | 447980337 | 152670739
 > | cpuacct.stat   | user:34,sys:4      |   user:34,sys:3  | user:12,sys:4
-> | cpuacct.usage_percpu | 206655546      |    351511754  | 66869739 
+> | cpuacct.usage_percpu | 206655546      |    351511754  | 66869739
 > | memory.max-usage-in-bytes   | 5910528     |   7909376 | 9056256
+
+> Lo sorprendente es que el editor de texto; emacs, ha consumido más recursos
+de procesamiento y de memoria que el navegador. Aunque si analizamos, el navegador
+no usa una interfaz de usuario, y si se hubiera usado Chrome o Firefox como navegador
+se hubierá visto un uso más elevado de procesador y memoria.
+
+
 
