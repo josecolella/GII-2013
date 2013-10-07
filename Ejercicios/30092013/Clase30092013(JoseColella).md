@@ -160,8 +160,8 @@ cde-package/home/josecolella/Desktop/Ejercicio3.py.cde
 un fichero a comprimir, y lo comprime. Finalmente, le enseña un mensaje de éxito.
 
 
-> El programa ejecutable se puede conseguir [aqui](https://github.com/josecolella/GII-2013/blob/master/meta/Ejercicios/30092013/Ejercicio3.py)
-> y el fichero comprimido se puede conseguir [aqui](https://github.com/josecolella/GII-2013/blob/master/meta/Ejercicios/30092013/cde-Ejercicio3.tar.gz)
+> El programa ejecutable se puede conseguir [aqui](https://github.com/josecolella/GII-2013/blob/master/Ejercicios/30092013/Ejercicio3.py)
+> y el fichero comprimido se puede conseguir [aqui](https://github.com/josecolella/GII-2013/blob/master/Ejercicios/30092013/cde-Ejercicio3.tar.gz)
 
 *Atención: El CDE no funciona cuando migramos el paquete de un sistema de 64 bit a 32 bit*
 
