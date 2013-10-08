@@ -94,3 +94,29 @@ aparece:
 ###Ejercicio 12
     - Instalar un entorno virtual para tu lenguaje de programación favorito (uno de los mencionados arriba, obviamente)
 
+> El entorno virtual que instalaré es *virtualenv*, que es un entorno virtual
+> de desarrollo de python. Los beneficios que proporciona con respecto de:
+>   - versiones del lenguaje
+>   - dependiencias
+> habilita tener un entorno que sea igual al entorno de producción. Además
+> proporciona separación entre otros entornos de desarrollo, que significa
+> que podemos tener diversos entornos con diferentes versiones y modulos en base
+> a la aplicación.
+
+> Para instalar **virtualenv** usa la herramiento para instalar y gestionar
+paquetes de python *pip*:
+
+> ```sh
+> pip3 install virtualenv
+> ```
+
+> Ahora instalado para comenzar un entorno aislado de desarrollo en python
+> ejecutamos la siguiente orden:
+
+> ```sh
+> virtualenv ENV
+> ```
+
+> Como vemos en la siguiente imagen, **virtualenv** crea un directorio
+> con el interprete de python, pip, easy_install, etc...Con esto tenemos
+> lo necesario para comenzar una aplicación aislada en python.
