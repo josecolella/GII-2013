@@ -44,15 +44,16 @@ Ejercicios
 > por la página oficial, tiene la technología de virtualización de intel como
 > se puede ver en la siguiente imagen:
 
-> Si ejecutamos el siguiente comando:
+> !["Características del procesador"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-08%20at%2023.08.49.png)
 
+> Determino si el procesador tiene virtualización a nivel de hardware, con el siguiente comando:
 > ```sh
 > egrep '^flags.*(vmx|svm)' /proc/cpuinfo
 > ```
-> que determina si el procesador tiene virtualización a nivel de hardware.
 
 > El output correspondiente, que se puede ver en la siguiente imagen:
 
+> !["Resultado de Ejecutar el comando"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-08%20at%2023.03.19.png)
 
 > indica que el procesador soporta virtualización de hardware.
 
