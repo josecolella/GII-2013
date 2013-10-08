@@ -120,3 +120,5 @@ paquetes de python *pip*:
 > Como vemos en la siguiente imagen, **virtualenv** crea un directorio
 > con el interprete de python, pip, easy_install, etc...Con esto tenemos
 > lo necesario para comenzar una aplicación aislada en python.
+
+> !["Resultado de ejecutar 'virtualenv ENV'"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-09%20at%2000.16.16.png)
