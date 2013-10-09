@@ -16,17 +16,85 @@ Ejercicios
 
     2. Implementar usando el fichero de configuración de cgcreate una política que dé menos prioridad a los procesos de usuario que a los procesos del sistema (o viceversa).
 
+> El fichero que hay que configurar para crear políticas de grupos de acceso es:
 >
->
->
+> ```sh
+> /etc/cgconfig.conf
+> ```
 
-    3. Usar un programa que muestre en tiempo real la carga del sistema tal como htopy comprobar los efectos de la migración en tiempo real de una tarea pesada de un procesador a otro (si se tiene dos núcleos en el sistema).
+> Antes de configurar el fichero, se crea el grupo de control donde estarán los
+> usuarios
+
+> ```sh
+> sudo cgcreate -g memory,cpu,cpuacct:users
+> ```
+
+> Después de crear el grupo de control, hay que configurar el fichero cgconfig,
+> en el cual se agregará polílicas de prioridad. Lo que he agregado en el fichero
+> de configuración ha sido lo siguiente:
+
+> ```sh
+> group users {
+   cpu.shares = 200
+   #cpu.shares indica cuanto tiempo CPU esta disponible para un cgroup
+> }
+> ```
+
+> Lo que hace el cambio es que los procesos del control de grupo `users` reciben
+> el doble del tiempo de CPU, que los procesos que tienen un valor de 100.
+
+> Ahora hay que agregar todos los procesos ejecutados de los usuarios del sistema
+> al grupo de control. Esto se hace usando configurando el fichero `/etc/cgrules.conf`
+> y agregando una regla que sigue el siguiente sintaxis.
+
+> **user subsystems control_group**
+
+> En mi caso tengo que agregar el único usuario que esta presente en el sistema: josecolella
+
+> ```sh
+> @josecolella all /users
+> ```
+> Esto significa cualquier proceso que sea de `josecolella` que acceda a todos
+> los subsistemas se mueve al control de grupo `users`.
+
+> Hay que reiniciar el servicio de cgconfig para que los cambios se realicen.
+
+> ```sh
+> sudo service cgconfig restart
+> ```
+
+    3. Usar un programa que muestre en tiempo real la carga del sistema tal como htop y comprobar los efectos de la migración en tiempo real de una tarea pesada de un procesador a otro (si se tiene dos núcleos en el sistema).
 
 >
 >
 >
 
     4. Configurar un servidor para que el servidor web que se ejecute reciba mayor prioridad de entrada/salida que el resto de los usuarios.
+
+> Para que el servidor web reciba mayor prioridad de entrada/salida hay que cambiar los parametros
+> de `blkio`. `blkio` control y monitoriza el acceso a I/O.
+>
+> Dentro del fichero de configuración se agrega el siguiente texto:
+
+> ```sh
+> group http {
+
+>   blkio {
+>    blkio.weight = 200
+>   }
+
+> }
+> ```
+
+> *blkio.weight determina la prioridad del grupo para acceder a disco.*
+> *Menos es el número, más grande es la prioridad.*
+
+> Después hay que indicarle a Apache (servidor web) que pertence a un grupo de
+> control. Agregamos la siguiente línea de texto al fichero `/etc/apache2/apache2.conf`
+
+> ```sh
+> CGROUP_DAEMON="blkio:/http"
+> ```
 
 
 ###Ejercicio 9
