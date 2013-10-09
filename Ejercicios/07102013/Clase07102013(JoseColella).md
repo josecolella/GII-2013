@@ -142,3 +142,24 @@ paquetes de python *pip*:
 > lo necesario para comenzar una aplicación aislada en python.
 
 > !["Resultado de ejecutar 'virtualenv ENV'"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-09%20at%2000.16.16.png)
+
+###Ejercicio 13
+    - Darse de alta en algún servicio PaaS tal como Heroku, Nodejitsu u OpenShift
+
+> El PaaS que me doy de alta es Heroku, ya que lo conosco después de haber
+> trabajo con el en algunas instancias.
+> Un PaaS proporciona un stack de herramientas para el despliegue de una aplicación.
+> Por ejemplo, cuando use Heroku para el despliegue de una aplicación web que útilizaba
+> nodejs y mongodb, el heroku detectaba que la aplicación era con nodejs y proporciona
+> las herramientas necesarias para su ejecución y visión por navegador.
+
+> Para darse de alta, solo se necesita un correo electrónico. Para poder interactuar
+hay que instalarse el cliente en la máquina de desarrollo, que se puede instalar
+usando el siguiente comando:
+
+> ```sh
+> wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+> ```
+
+> *El comando anterior se usa para distribuciones de Debian/Ubuntu*
+
