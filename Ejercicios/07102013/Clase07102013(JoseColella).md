@@ -153,9 +153,9 @@ paquetes de python *pip*:
 > nodejs y mongodb, el heroku detectaba que la aplicación era con nodejs y proporciona
 > las herramientas necesarias para su ejecución y visión por navegador.
 
-> Para darse de alta, solo se necesita un correo electrónico. Para poder interactuar
-hay que instalarse el cliente en la máquina de desarrollo, que se puede instalar
-usando el siguiente comando:
+> Para darse de alta, sólo se necesita un correo electrónico. Para poder interactuar
+hay que instalarse una herramienta de línea de comando en la máquina de desarrollo,
+que se puede instalar usando el siguiente comando:
 
 > ```sh
 > wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
