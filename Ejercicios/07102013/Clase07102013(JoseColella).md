@@ -88,7 +88,27 @@ aparece:
 ###Ejercicio 11
     - Comentar diferentes soluciones de Software as a Service de uso habitual.
 
+> Software as a Service es un paradigma revolucionario para el desarrollo y despliegue
+> de aplicaciones. Software as a Service útilizan el internet, especialmente los
+> navegadores web como plataforma de desarrollo y ejecución.
 
+> Soluciones que uso habitual que son Software as a Service son:
+>   - redes sociales
+>    - Facebook
+>    - Twitter
+>   - servicios de correo:
+>    - Yahoo
+>    - Gmail
+
+
+> Hasta Microsoft ha visto que Software as a Service es el futuro
+> para el desarrollo y despliegue de aplicaciones, que ha migrado
+> su suite popular de Microsoft Office a la nube, denotado como Microsoft
+> Office 365
+
+> Software as a Service proporciona beneficios a los usuarios, que
+> ya no tiene que preocuparse de incompatibilidades hardware con el software y a los
+> desarrolladores del software.
 
 
 ###Ejercicio 12
