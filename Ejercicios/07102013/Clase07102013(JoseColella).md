@@ -6,7 +6,7 @@ Ejercicios
 
 ###Ejercicio 8
 
-    1. Qué aplicación puede tener la limitación o asignación de recursos en un entorno de producción?
+1. Qué aplicación puede tener la limitación o asignación de recursos en un entorno de producción?
 
 > Una posible aplicación de limitación o asignación de recursos es lo que hacen las empresas de hosting
 > o las empresas que suelen rentar servicios a usuarios. Lo que suelen hacer es limitar los recursos de procesamiento,
@@ -14,7 +14,7 @@ Ejercicios
 > servicio ya que se asegura que el cliente tenga disponible los servicios que haya pagado, y facilita el
 > gestionamiento de recursos por parte de la empresa.
 
-    2. Implementar usando el fichero de configuración de cgcreate una política que dé menos prioridad a los procesos de usuario que a los procesos del sistema (o viceversa).
+2. Implementar usando el fichero de configuración de cgcreate una política que dé menos prioridad a los procesos de usuario que a los procesos del sistema (o viceversa).
 
 > El fichero que hay que configurar para crear políticas de grupos de acceso es:
 >
@@ -29,19 +29,34 @@ Ejercicios
 > sudo cgcreate -g memory,cpu,cpuacct:users
 > ```
 
-> Después de crear el grupo de control, hay que configurar el fichero cgconfig,
+> Además se tiene que crear un grupo que contendrá los procesos de sistema, que
+en mi caso son los procesos de root
+
+> ```sh
+> sudo cgcreate -g memory,cpu,cpuacct:system
+> ```
+
+> Después de crear los grupos de control, hay que configurar el fichero cgconfig,
 > en el cual se agregará polílicas de prioridad. Lo que he agregado en el fichero
 > de configuración ha sido lo siguiente:
 
 > ```sh
 > group users {
-   cpu.shares = 200
-   #cpu.shares indica cuanto tiempo CPU esta disponible para un cgroup
+> cpu {
+>    cpu.shares = "256";
+>    #cpu.shares indica cuanto tiempo CPU esta disponible para un cgroup
+> }
+>}
+
+> group system {
+>   cpu{
+>    cpu.shares = "768";
+>    }
 > }
 > ```
 
 > Lo que hace el cambio es que los procesos del control de grupo `users` reciben
-> el doble del tiempo de CPU, que los procesos que tienen un valor de 100.
+> 25.6 % de CPU, mientas que los procesos del control de grupo `system` reciben 76.8%.
 
 > Ahora hay que agregar todos los procesos ejecutados de los usuarios del sistema
 > al grupo de control. Esto se hace usando configurando el fichero `/etc/cgrules.conf`
@@ -52,24 +67,28 @@ Ejercicios
 > En mi caso tengo que agregar el único usuario que esta presente en el sistema: josecolella
 
 > ```sh
-> @josecolella all /users
+> josecolella cpu,cpuacct,memory users/
+> root        cpu,cpuacct,memory system/
 > ```
-> Esto significa cualquier proceso que sea de `josecolella` que acceda a todos
-> los subsistemas se mueve al control de grupo `users`.
+> Esto significa cualquier proceso que sea de `josecolella` que acceda a los
+> los subsistemas se mueve al control de grupo `users`. Además cualquier procesor
+que provenga de `root`
 
-> Hay que reiniciar el servicio de cgconfig para que los cambios se realicen.
+> Hay que reiniciar el servicio de cgconfig y cgred para que los realicen los
+cambios sobre las políticas de seguridad y configuraciones sobre los grupos de control.
 
 > ```sh
 > sudo service cgconfig restart
+> sudo service cgred restart
 > ```
 
-    3. Usar un programa que muestre en tiempo real la carga del sistema tal como htop y comprobar los efectos de la migración en tiempo real de una tarea pesada de un procesador a otro (si se tiene dos núcleos en el sistema).
+3. Usar un programa que muestre en tiempo real la carga del sistema tal como htop y comprobar los efectos de la migración en tiempo real de una tarea pesada de un procesador a otro (si se tiene dos núcleos en el sistema).
 
 >
 >
 >
 
-    4. Configurar un servidor para que el servidor web que se ejecute reciba mayor prioridad de entrada/salida que el resto de los usuarios.
+4. Configurar un servidor para que el servidor web que se ejecute reciba mayor prioridad de entrada/salida que el resto de los usuarios.
 
 > Para que el servidor web reciba mayor prioridad de entrada/salida hay que cambiar los parametros
 > de `blkio`. `blkio` control y monitoriza el acceso a I/O.
@@ -98,9 +117,9 @@ Ejercicios
 
 
 ###Ejercicio 9
-    - Comprobar si el procesador o procesadores instalados lo tienen.
-    ¿Qué modelo de procesador es?
-    ¿Qué aparece como salida de esa orden?
+- Comprobar si el procesador o procesadores instalados lo tienen.
+¿Qué modelo de procesador es?
+¿Qué aparece como salida de esa orden?
 
 > El procesador que tiene la máquina es el seguiente modelo:
 
@@ -126,7 +145,7 @@ Ejercicios
 > indica que el procesador soporta virtualización de hardware.
 
 ###Ejercicio 10
-    - Comprobar si el núcleo instalado en tu ordenador contiene este módulo del kernel usando la orden kvm-ok
+- Comprobar si el núcleo instalado en tu ordenador contiene este módulo del kernel usando la orden kvm-ok
 
 > Para poder la orden **kvm-ok** es importante tener instalado un paquete especial
 > que habilita conocer información adicional de la CPU.
@@ -154,7 +173,7 @@ aparece:
 > hardware.
 
 ###Ejercicio 11
-    - Comentar diferentes soluciones de Software as a Service de uso habitual.
+- Comentar diferentes soluciones de Software as a Service de uso habitual.
 
 > Software as a Service es un paradigma revolucionario para el desarrollo y despliegue
 > de aplicaciones. Software as a Service útilizan el internet, especialmente los
@@ -180,7 +199,7 @@ aparece:
 
 
 ###Ejercicio 12
-    - Instalar un entorno virtual para tu lenguaje de programación favorito (uno de los mencionados arriba, obviamente)
+- Instalar un entorno virtual para tu lenguaje de programación favorito (uno de los mencionados arriba, obviamente)
 
 > El entorno virtual que instalaré es *virtualenv*, que es un entorno virtual
 > de desarrollo de python. Los beneficios que proporciona con respecto de:
@@ -212,7 +231,7 @@ paquetes de python *pip*:
 > !["Resultado de ejecutar 'virtualenv ENV'"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-09%20at%2000.16.16.png)
 
 ###Ejercicio 13
-    - Darse de alta en algún servicio PaaS tal como Heroku, Nodejitsu u OpenShift
+- Darse de alta en algún servicio PaaS tal como Heroku, Nodejitsu u OpenShift
 
 > El PaaS que me doy de alta es Heroku, ya que lo conosco después de haber
 > trabajo con el en algunas instancias.
