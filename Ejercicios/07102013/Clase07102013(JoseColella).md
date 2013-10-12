@@ -84,9 +84,54 @@ cambios sobre las políticas de seguridad y configuraciones sobre los grupos de 
 
 3. Usar un programa que muestre en tiempo real la carga del sistema tal como htop y comprobar los efectos de la migración en tiempo real de una tarea pesada de un procesador a otro (si se tiene dos núcleos en el sistema).
 
+> Para aislar la carga en un CPU, se tiene que usar la opción cpuset.cpus. cpuset.cpus asigna
+procesadores a procesos.
+
+> Para usar esa opción hay que montar el sistema de ficheros virtual como un cgroup
+
+> ```sh
+> sudo mount -t cgroup /sys/fs/cgroup/cpuset
+> ```
+
+> Ahora creo un grupo de control ("processor") que se asignará la primera CPU, y después hay que
+configurar el fichero /etc/cgconfig.conf para crear las reglas de prioridad.
+
+> ```sh
+> group processor {
+  cpuset {
+>   cpuset.cpus = "0";
+>  }
+> }
+> ```
+
+> Reinicamos el servicio con:
+
+>```sh
+> sudo service cgconfig restart
+> ```
+
+> Mandamos a ejecutar una aplicación con dicho grupo de control con el siguiente comando:
+
+> ```sh
+> sudo cgexec -g cpuset:processor emacs -nw &
 >
->
->
+
+> Analizamos la carga con htop que proporciona la carga en cada CPU. Ahora si
+queremos cambiar la CPU en la cual se ejecutará los procesos del grupo de control
+se cambia el fichero /etc/cgconfig.
+
+
+> ```sh
+> group processor {
+  cpuset {
+>   cpuset.cpus = "1";
+>  }
+> }
+> ```
+
+> Como podemos ver en la siguiente imagen el proceso se ha cambiado al segundo procesador:
+
+
 
 4. Configurar un servidor para que el servidor web que se ejecute reciba mayor prioridad de entrada/salida que el resto de los usuarios.
 
