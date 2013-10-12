@@ -131,7 +131,7 @@ se cambia el fichero /etc/cgconfig.
 
 > Como podemos ver en la siguiente imagen el proceso se ha cambiado al segundo procesador:
 
-
+> !["Imagen enseñando la migración al segundo procesador"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-12%20at%2013.20.32.png)
 
 4. Configurar un servidor para que el servidor web que se ejecute reciba mayor prioridad de entrada/salida que el resto de los usuarios.
 
