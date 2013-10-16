@@ -82,13 +82,13 @@ El comando para instalar git es:
 > Esto lo hacemos usando el boton de crearse un nuevo repository como se puede ver en la siguiente imagen.
 >
 
-   ![Crear Nuevo Respositorio](https://raw.github.com/josecolella/GII-2013/master/meta/Screenshots/Screen%20Shot%202013-10-01%20at%2017.08.41.png)
+   ![Crear Nuevo Respositorio](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema1Screenshots/Screen%20Shot%202013-10-01%20at%2017.08.41.png)
 
 > Después tienes que darle un nombre a dicho repositorio, y una descripción opcional.
 > Para que el proyecto tenga un README, hacemos click en la caja que dice *"Initialize this repository with a README"*.
 > En la siguiente imagen podemos ver los pasos a seguir:
 
-   ![Crear nuevo proyecto e inicializar con README](https://raw.github.com/josecolella/GII-2013/master/meta/Screenshots/Screen%20Shot%202013-10-01%20at%2017.11.22.png)
+   ![Crear nuevo proyecto e inicializar con README](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema1Screenshots/Screen%20Shot%202013-10-01%20at%2017.11.22.png)
 
 > Cuando haces click sobre el botón *"Create repository"* se crea el proyecto en GitHub.
 
