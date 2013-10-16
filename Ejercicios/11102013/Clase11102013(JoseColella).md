@@ -15,7 +15,7 @@ Ejercicios
 > Por ejemplo, como se ve en la siguiente imagen, OpenShift tiene un '*quickstart*' para inicializar
 > un WordPress tocando un boton.
 
-> ![Foto olustrando un despliegue ágil de WordPress](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-09%20at%2023.48.29.png)
+> ![Foto olustrando un despliegue ágil de WordPress](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema1Screenshots/Screen%20Shot%202013-10-09%20at%2023.48.29.png)
 
 > OpenShift se encarga del resto. Ahora hay que asignarle un URL a la aplicación
 > para que se pueda visualizar y configurar ya que WordPress es un CMS, usado
@@ -24,7 +24,7 @@ Ejercicios
 > En la siguiente imagen, podemos ver el nombre asignado para acceder a mi blog
 en OpenShift.
 
-> !["Foto del URL reservado para acceder a la applicación"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-09%20at%2023.55.59.png)
+> !["Foto del URL reservado para acceder a la applicación"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema1Screenshots/Screen%20Shot%202013-10-09%20at%2023.55.59.png)
 
 > OpenShift proporciona información sobre acceso a las bases de datos del
 WordPress, para que el desarrollador pueda configurar las bases de datos.
@@ -38,5 +38,5 @@ WordPress, para que el desarrollador pueda configurar las bases de datos.
 > Como podemos ver en la siguiente imagen, el blog ha sido correctamente
 desplegada y se ha creado un post.
 
-> !["Foto del primer comentario de el blog"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-10%20at%2000.17.55.png)
+> !["Foto del primer comentario de el blog"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema1Screenshots/Screen%20Shot%202013-10-10%20at%2000.17.55.png)
 
