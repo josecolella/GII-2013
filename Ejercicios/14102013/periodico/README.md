@@ -42,11 +42,32 @@ el nombre http://periodico-ivblog.rhcloud.com/.
 
 !["Registración de una aplicación"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Practica1Photos/Screen%20Shot%202013-10-16%20at%2012.49.18.png)
 
+
 2. A continuación, OpenShift nos habilita agregar herramientas, como bases de datos
 a nuestra aplicación. En mi caso, he agregado la gestor de bases de datos, *MySQL*,
 y la herramient web *phpyadmin* para facilitar la creación de las bases de datos de la aplicación.
 
-En la siguiente imagen, 
+En la siguiente imagen, vemos la agregación de *phpmyadmin*.
+
+!["Foto en la cual se ve la addición de phpmyadmin como herramienta"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Practica1Photos/Screen%20Shot%202013-10-15%20at%2023.14.32.png)
+
+*Una cosa muy importante de tener en cuenta es que cuando se agregan estan dos herramientas,*
+*OpenShift proporciona información sobre autentificación para acceso a dichas herramientas*
+
+Como podemos ver en las siguientes imagenes, OpenShift proporciona el nombre de usuario y contraseña
+para poder acceder a *MySQL* y a *phpmyadmin*.
+
+En la siguiente imagen, vemos como OpenShift ha proporcionado los credenciales para poder acceder a *MySQL*.
+
+!["Credenciales para poder acceder a MySQL"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Practica1Photos/Screen%20Shot%202013-10-15%20at%2023.13.32.jpg)
+
+Para *phpmyadmin*, emplea el mismo mecanismo, como podemos ver en la siguiente imagen.
+
+!["Credenciales para acceder a phpmyadmin"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Practica1Photos/Screen%20Shot%202013-10-15%20at%2023.14.48.jpg)
+
+3. 
+
+
 
 
 
