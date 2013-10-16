@@ -6,7 +6,7 @@ Ejercicios
 
 ###Ejercicio 8
 
-1. Qué aplicación puede tener la limitación o asignación de recursos en un entorno de producción?
+1 . Qué aplicación puede tener la limitación o asignación de recursos en un entorno de producción?
 
 > Una posible aplicación de limitación o asignación de recursos es lo que hacen las empresas de hosting
 > o las empresas que suelen rentar servicios a usuarios. Lo que suelen hacer es limitar los recursos de procesamiento,
@@ -14,7 +14,7 @@ Ejercicios
 > servicio ya que se asegura que el cliente tenga disponible los servicios que haya pagado, y facilita el
 > gestionamiento de recursos por parte de la empresa.
 
-2. Implementar usando el fichero de configuración de cgcreate una política que dé menos prioridad a los procesos de usuario que a los procesos del sistema (o viceversa).
+2 . Implementar usando el fichero de configuración de cgcreate una política que dé menos prioridad a los procesos de usuario que a los procesos del sistema (o viceversa).
 
 > El fichero que hay que configurar para crear políticas de grupos de acceso es:
 >
@@ -82,7 +82,7 @@ cambios sobre las políticas de seguridad y configuraciones sobre los grupos de 
 > sudo service cgred restart
 > ```
 
-3. Usar un programa que muestre en tiempo real la carga del sistema tal como htop y comprobar los efectos de la migración en tiempo real de una tarea pesada de un procesador a otro (si se tiene dos núcleos en el sistema).
+3 . Usar un programa que muestre en tiempo real la carga del sistema tal como htop y comprobar los efectos de la migración en tiempo real de una tarea pesada de un procesador a otro (si se tiene dos núcleos en el sistema).
 
 > Para aislar la carga en un CPU, se tiene que usar la opción cpuset.cpus. cpuset.cpus asigna
 procesadores a procesos.
@@ -131,9 +131,9 @@ se cambia el fichero /etc/cgconfig.
 
 > Como podemos ver en la siguiente imagen el proceso se ha cambiado al segundo procesador:
 
-> !["Imagen enseñando la migración al segundo procesador"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-12%20at%2013.20.32.png)
+> !["Imagen enseñando la migración al segundo procesador"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema1Screenshots/Screen%20Shot%202013-10-12%20at%2013.20.32.png)
 
-4. Configurar un servidor para que el servidor web que se ejecute reciba mayor prioridad de entrada/salida que el resto de los usuarios.
+4 . Configurar un servidor para que el servidor web que se ejecute reciba mayor prioridad de entrada/salida que el resto de los usuarios.
 
 > Para que el servidor web reciba mayor prioridad de entrada/salida hay que cambiar los parametros
 > de `blkio`. `blkio` control y monitoriza el acceso a I/O.
@@ -176,7 +176,7 @@ se cambia el fichero /etc/cgconfig.
 > por la página oficial, tiene la technología de virtualización de intel como
 > se puede ver en la siguiente imagen:
 
-> !["Características del procesador"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-08%20at%2023.08.49.png)
+> !["Características del procesador"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema1Screenshots/Screen%20Shot%202013-10-08%20at%2023.08.49.png)
 
 > Determino si el procesador tiene virtualización a nivel de hardware, con el siguiente comando:
 > ```sh
@@ -185,7 +185,7 @@ se cambia el fichero /etc/cgconfig.
 
 > El output correspondiente, que se puede ver en la siguiente imagen:
 
-> !["Resultado de Ejecutar el comando"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-08%20at%2023.03.19.png)
+> !["Resultado de Ejecutar el comando"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema1Screenshots/Screen%20Shot%202013-10-08%20at%2023.03.19.png)
 
 > indica que el procesador soporta virtualización de hardware.
 
@@ -273,7 +273,7 @@ paquetes de python *pip*:
 > con el interprete de python, pip, easy_install, etc...Con esto tenemos
 > lo necesario para comenzar una aplicación aislada en python.
 
-> !["Resultado de ejecutar 'virtualenv ENV'"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Screen%20Shot%202013-10-09%20at%2000.16.16.png)
+> !["Resultado de ejecutar 'virtualenv ENV'"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema1Screenshots/Screen%20Shot%202013-10-09%20at%2000.16.16.png)
 
 ###Ejercicio 13
 - Darse de alta en algún servicio PaaS tal como Heroku, Nodejitsu u OpenShift
