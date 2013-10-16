@@ -1,0 +1,141 @@
+
+/********************************************************************************	
+/*La siguiente secciones cambia la presentacion de los enlaces*/
+a:link{color: #000000; text-decoration: none;}
+a:visited{color: black;}
+a:hover{color:blue; text-decoration:underline;} /*When hover is active the color is light blue */
+a:active{color:#FF0000;} /*When selected it turns into darker blue*/ 	
+/*********************************************************************************/
+
+
+/*En esta pagina definimos el estilo para la pagina de administracion*/
+
+header{
+	text-align: center;
+	background-color: #fff;
+	margin-right: auto;
+	margin-left:auto;
+	border-style: inset none outset none;
+	border-color: #7ACC52;
+	border-width:5px;
+	font-family: 'Rye', cursive;
+}
+
+h1{
+	font-size: 74px;
+	margin:5px;
+
+}
+
+h3{
+	font-family: 'Arbutus Slab', serif;
+	font-size: 24px;
+	font-color:black;
+}
+
+.date
+{
+	font-size: 14px;
+	text-align: center;
+}
+body{
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 14px;
+	width: 1000px;
+	background: #AFAF93;
+}
+
+p{
+	
+	font-size: 18px;
+	text-align:center;
+	font-family: 'Arbutus Slab', serif;
+	border:3px outset #6A8252;
+	margin-left: 100px;
+	margin-right: 135px;
+	padding-right: 10px;
+}
+
+textarea{
+	display: inline-block;
+	overflow:scroll;
+}
+
+
+/*************************************/
+
+
+
+#newspaper
+{
+
+	width:750px;
+	float:left;
+	background-color: #fff;
+	display:inline;
+}
+
+.options 
+{
+	display: inline-block;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: 70px;
+	width:500px;
+	padding: 5px;
+	background-color: #F0F0E9;
+	border:3px groove #6A8252;
+	border-spacing: 10px;
+	text-align: left;
+}
+
+.notification  
+{
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-left: 0px;
+	margin-bottom: 10px;
+	width:400px;
+	text-align: center;
+}
+
+.storyNum button
+{
+	float:right;
+	margin-bottom: 30px;
+}
+
+
+input[type="image"]
+{
+	background-color: transparent;
+	width: 40px;
+	height: 40px;
+	padding-left: 95px;
+	padding-bottom: 5px;
+	margin-top: 10px;
+	margin-left: 60px;
+	display:inline;
+}
+
+
+#FinishButton
+{
+	font-family: 'Arbutus Slab', serif;
+	width: 150px;
+	height: 50px;
+	font-size: 18px;
+	font-weight:bold;
+	border: double 2px #CCCCCC;
+	margin-left: 300px;
+	margin-bottom: 30px;
+	background: linear-gradient(top, #efefef 0%, #bbbbbb 100%);  
+	background: -moz-linear-gradient(top, #efefef 0%, #bbbbbb 100%); 
+	background: -webkit-linear-gradient(top, #efefef 0%,#bbbbbb 100%); 
+	
+}
