@@ -40,13 +40,13 @@ He seleccionado PHP 5.3 para que pueda ejecutar mi aplicación.
 Como podemos ver en la siguiente imagen, he registrado la aplicación con
 el nombre http://periodico-ivblog.rhcloud.com/.
 
-Aqui van las imagenes
+!["Registración de una aplicación"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Practica1Photos/Screen%20Shot%202013-10-16%20at%2012.49.18.png)
 
 2. A continuación, OpenShift nos habilita agregar herramientas, como bases de datos
 a nuestra aplicación. En mi caso, he agregado la gestor de bases de datos, *MySQL*,
-y *phpyadmin* para facilitar la creación de las bases de datos de la aplicación.
+y la herramient web *phpyadmin* para facilitar la creación de las bases de datos de la aplicación.
 
-Aqui van las imagenes
+En la siguiente imagen, 
 
 
 
