@@ -15,4 +15,37 @@ Ejercicios
     si no se tiene.
 
 
+> * Para mostrar los puentes configurados en el sistema operativo, usamos el 
+> siguiente comando:
 
+> ```sh
+> sudo brctl show
+> ```
+
+> Como podemos ver en la siguiente imagen, el sistema tiene tres interfaces.
+
+
+
+
+> Una interfaz es la que se ha creado, que esta ligada con la interfaz eth0.
+> La segunda interfaz esta relacionada con docker, para proporcionar acceso a red a los contenedores. La tercera interfaz esta relacionada con lxc.
+
+
+> * Para crear una interfaz virtual podemos usar el siguiente comando:
+
+> ```sh
+> sudo brctl addbr virtualint
+> ```
+
+> Para asignarlo a la interfaz, el sistema requiere al menos una instancia logica. En mi caso no tengo tarjeta wifi, asociare la interfaz fija *etho* a la interfaz creada.
+
+> ```sh
+> sudo brctl addif virtualint eth0
+> sudo brctl show
+> ```
+
+> Si queremos habilitar la interfaz virtual podemos usar el siguiente comando:
+
+> ```sh
+> ifconfig virtualint up
+> ```
