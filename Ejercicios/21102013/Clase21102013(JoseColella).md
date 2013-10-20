@@ -25,7 +25,7 @@ Ejercicios
 > Como podemos ver en la siguiente imagen, el sistema tiene tres interfaces.
 
 
-
+> !["Puentes configurados en el sistema operativo"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema2Screenshots/Screenshot%20from%202013-10-20%2023:05:24.png)
 
 > Una interfaz es la que se ha creado, que esta ligada con la interfaz eth0.
 > La segunda interfaz esta relacionada con docker, para proporcionar acceso a red a los contenedores. La tercera interfaz esta relacionada con lxc.
