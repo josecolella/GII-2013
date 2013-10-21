@@ -14,11 +14,16 @@ Ejercicios
 > sudo unshare -u /bin/bash
 > ```
 
-> Para montar un imagen ISO, podemos usar el comando mount, como podemos ver en la siguiente imagen. 
+> Para montar un imagen ISO, podemos usar el comando mount, como podemos ver en la siguiente imagen. Primero se ha creado el directorio /mnt/disk.
 
-
+> !["Imagen de montar de una ISO"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema2Screenshots/Screenshot%20from%202013-10-21%2022:17:35.png)
 
 > Se ha montado la .iso de la distribución de GNU/Linux, ArchLinux, en el directorio /mnt/disk.
+
+> Para verificar que se haya montado en el espacio de nombres usamos df -h.
+Como podemos ver en la siguiente imagen, el ISO se ha montado correctamente en el sistema en el directio /mnt/disk.
+
+> !["Imagen de los sistemas de ficheros montados"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema2Screenshots/Screenshot%20from%202013-10-21%2022:18:59.png)
 
 ##Ejercicio 2
     1. Mostrar los puentes configurados en el sistema operativo.
