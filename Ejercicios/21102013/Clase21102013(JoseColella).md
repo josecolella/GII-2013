@@ -8,6 +8,17 @@ Ejercicios
     Crear un espacio de nombres y montar en él una imagen ISO de un CD de forma que no se pueda leer más que desde él.
     Pista: en ServerFault nos explican como hacerlo, usando el dispositivo loopback
 
+> Para crear un espacio de nombres usamos el comando:
+
+> ```sh
+> sudo unshare -u /bin/bash
+> ```
+
+> Para montar un imagen ISO, podemos usar el comando mount, como podemos ver en la siguiente imagen. 
+
+
+
+> Se ha montado la .iso de la distribución de GNU/Linux, ArchLinux, en el directorio /mnt/disk.
 
 ##Ejercicio 2
     1. Mostrar los puentes configurados en el sistema operativo.
