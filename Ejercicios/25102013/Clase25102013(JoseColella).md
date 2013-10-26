@@ -49,18 +49,18 @@ instalamos el modulo esencial para poder ejecutar rinse.
 
 > En la siguiente podemos visualizar las diversas distribuciones disponibles.
 
-> !["Imagen de las distribuciones disponibles con Rinse"](https://github.com/josecolella/GII-2013/blob/master/Screenshots/Tema2Screenshots/listdistributions.png)
+> !["Imagen de las distribuciones disponibles con Rinse"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema2Screenshots/listdistributions.png)
 
 > En mi caso he optado por instalar *CentOS 6* en el directorio /home/guest/centos6/. Con rinse podemos especificar la arquitectura de procesador que empleará la distribución.
 
 > En la siguiente imagen, podemos ver el comando ejecutado para instalar la versión de 64 bit de CentOS en el directorio /home/guest/centos6
 
-> !["Instalar CentOS con Rinse"](https://github.com/josecolella/GII-2013/blob/master/Screenshots/Tema2Screenshots/installcentos.png)
+> !["Instalar CentOS con Rinse"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema2Screenshots/installcentos.png)
 
 > Ahora rinse comienza a coger las dependencias necesarias para poder instalar
 centos. Al final del proceso de instalación, podemos usar chroot para meternos dentro de la distribución como root, como vemos en la siguiente imagen.
 
-> !["Chroot en el sistema de CentOS"](https://github.com/josecolella/GII-2013/blob/master/Screenshots/Tema2Screenshots/chrootcentos.png)
+> !["Chroot en el sistema de CentOS"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema2Screenshots/chrootcentos.png)
 
 > Finalmente, para probar que se ha instalado he usado la siguiente orden:
 
@@ -88,12 +88,12 @@ Enlaces Adicionales:
 > Ademas he instalado vim para tener un editor de texto para crear el script y ejecutarlo en el sistema.
 En la siguiente imagen, podemos ver el script creado.
 
-> !["Script creado en Wheezy"](https://github.com/josecolella/GII-2013/blob/master/Screenshots/Tema2Screenshots/scriptcreado.png)
+> !["Script creado en Wheezy"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema2Screenshots/scriptcreado.png)
 
 > Ahora para ejecutar el script, usamos el interprete de python instalado. 
 En la siguiente podemos ver la ejecución del script creado.
 
-> !["Ejecución del script python"](https://github.com/josecolella/GII-2013/blob/master/Screenshots/Tema2Screenshots/scriptejecutado.png)
+> !["Ejecución del script python"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema2Screenshots/scriptejecutado.png)
 
 
 [1]: http://www.steve.org.uk/Software/rinse/rinse-2.0.1.tar.gz
