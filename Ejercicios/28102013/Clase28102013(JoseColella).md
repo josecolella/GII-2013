@@ -1,4 +1,4 @@
-Clase de 25 de Octubre
+Clase de 28 de Octubre
 =====================
 
 Ejercicios
