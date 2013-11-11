@@ -31,7 +31,7 @@ Para instalar el programa usamos make install.
 > ```sh 
 > apt-get install wget rpm
 > make install
-> ``
+> ```
 
 > *Es importante tener perl instalado y ademas tener instalado el modulo de perl que trabaja como una interfaz para el internet, sino no funciona rinse.*
 Usando el siguiente comando:
