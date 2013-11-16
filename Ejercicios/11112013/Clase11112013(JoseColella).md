@@ -4,9 +4,14 @@ Clase de 11 de Noviembre
 Ejercicios
 ----------
 
-    1. Entender el concepto de contenedores.
-    2. Configurar el sistema para poder crear y usar contenedores.
-    3. Crear y usar contenedores.
+     1. Instala LXC en tu versión de Linux favorita.
+     2. Comprobar qué interfaces puente ha creado y explicarlos
+     3.  a. Crear y ejecutar un contenedor basado en Debian
+         b. Crear y ejecutar un contenedor basado en otra distribución.
+     4.  a. Instalar lxc-webpanel y usarlo para arrancar, para y visualizar las
+            máquinas virtuales qu se tengan instaladas.
+         b. Desde el panel restringir los recursos que pueden usar:
+         CPU shares, CPUs que se pueden usar o cantidad de memoria.
 
 ###1.
 
