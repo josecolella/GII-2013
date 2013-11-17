@@ -4,13 +4,13 @@ Clase de 11 de Noviembre
 Ejercicios
 ----------
 
-     1. Instala LXC en tu versión de Linux favorita.
-     2. Comprobar qué interfaces puente ha creado y explicarlos
-     3.  a. Crear y ejecutar un contenedor basado en Debian
+    1. Instala LXC en tu versión de Linux favorita.
+    2. Comprobar qué interfaces puente ha creado y explicarlos
+    3.  a. Crear y ejecutar un contenedor basado en Debian
          b. Crear y ejecutar un contenedor basado en otra distribución.
-     4.  a. Instalar lxc-webpanel y usarlo para arrancar, para y visualizar las
+    4.  a. Instalar lxc-webpanel y usarlo para arrancar, para y visualizar las
             máquinas virtuales qu se tengan instaladas.
-         b. Desde el panel restringir los recursos que pueden usar:
+        b. Desde el panel restringir los recursos que pueden usar:
          CPU shares, CPUs que se pueden usar o cantidad de memoria.
 
 ###1.
@@ -24,30 +24,22 @@ sudo apt-get install lxc
 
 ###2.
 
-Después de haber instalado un contenedor basado en ubuntu y en ubuntu cloud
-usando los siguientes comandos:
+> Después de haber instalado un contenedor basado en ubuntu y en ubuntu cloud
+> usando los siguientes comandos:
 
-```sh
-sudo lxc-create -n una-caja -t ubuntu
-sudo lxc-create -n nubecilla -t ubuntu-cloud
-```
+> ```sh
+> sudo lxc-create -n una-caja -t ubuntu
+> sudo lxc-create -n nubecilla -t ubuntu-cloud
+> ```
 
-podemos visualizar las interfaces puentes creadas con el comando
-```ifconfig -a```.
+> Podemos visualizar las interfaces puentes creadas con el comando
+> ```sudo brctl show```.
 
-Para visualizar la interfaz del contenedor "nubecilla", hay que arrancar dicho
-contenedor
+> !["Puentes creados"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/puentescreados.png)
 
-```sh
-sudo lxc-start -n nubecilla
-```
-
-Ya dentro del contenedor, dentro del terminal ejecutamos ```ifconfig -a```.
-Dentro de mi contenedor `nubecilla` existen las siguientes
-configuraciones de red.
-
-!["Configuración de red de nubecilla"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/ifconfigubuntucloudlxc.png)
-
+> En la anterior imagen se puede ver que se ha creado un puente para los
+> contenedores lxc `lxcbe0`. Además se han creados dos interfaces que
+> corresponden a los contenedores creados; `veth3oe10g` y `vethFTgZRY`.
 
 
 ###3.
