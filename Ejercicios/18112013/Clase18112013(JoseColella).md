@@ -9,72 +9,74 @@ Ejercicios
 Charla de Nubbius
 -----------------
 
-Aplicación en Nube
-Como montar una aplicación.
-Google App Engine
+A continuación se habra sobre la charla dada por Ignacio Zafra de Nubbius, que
+es una empresa que "desarrolla una aplicación escalable y robusta para
+proporcionar una ayuda para que abogados puedan gestionar sus clientes."
 
-Nube -> Trabajar desde cualquier lado.
+La charla sobre la empresa Nubbius termino siendo muy interesante,
+ya que se pudo tener un entendimiento basico de como emplear infraestructura
+virtual a nivel de empresa.
 
-Nibbius -> SaaS cloud computing despacho abogado.
-Se puede acceder desde multiples dispositivos.
-trabajr conjuntamente, compartir información.
+Cuando se ha comenzado hablar sobre las ventajas de usar la nube en comparación
+con una metodología tradicional (Comprar servidor y configurar todo), han salido
+unos puntos muy interesantes.
+
++ Con la nube se puede trabajar desde cualquier lado
++ El cloud computing facilita la accesibildad, seguridad de las aplicaciones.
++ Con la metodología tradicional, el hardware se tendrá que reemplazar en
+poco tiempo debido al rápido avance de la tecnología.
++ La nube ha descentralizado el proceso de creación y despliegue de aplicaciones.
+  + La nube gestiona los recusos de hardware
++ Fiable y seguro ademas de suponer un ahorro de costes
+
+Con respecto al Google App Engine, me intereso que lo tienen para varios
+lenguajes de programación; PHP, Python, Go, y Java (Que es el que emplea Nubbius).
+
+En la presentación me parecio interesante una cosa dicha por Ignacio Zafra.
+Dijo que la nube es como los mainframes de lo viejos tiempo, y que debido a
+la robustez de la red hoy en día, se ha comenzado el movimiento hacía la nube,
+por parte de programadores y empresas.
+
+Con respecto a la creación de aplicaciones web, Ignacio reitero los siguientes
+pasos:
+
+| Pasos |                   |
+| ----  | ----------------- |
+| 1 |               Análisis|
+| 2 |               Diseño         |
+| 3 |               Prototipo      |
+| 4 |               Implementación |
+
+Y dijo algo que nos han dicho muchas veces durante la carrera. El paso
+más importante es el análisis y diseño. Sin un buen análisis y diseño,
+el proyecto fallará sin duda.
+
+Hablo de Wireframing, que es una guía visual para representar una
+website.
+
+- Además hablo sobre una herramienta que usa su empresa llamada "[Balsamiq][1]".
+
+Hablo prevemente sobre la pila de soluciones que emplea su empresa.
 
 
-Gestion de Expedientes Asuntos
++ Google App Engine
++ Google WebToolKit (GWT) BBDD No SQL
++ JQuery Mobile
++ Webservice Rest
 
-Cloud compting facilita la accesibilidad, seguridad de las aplicaciones
+Además introdujo el IaaS que tiene Google, Google Computer Engine.
 
-La nube ha descentralizado el proceso de creacion y despliegue de aplicaciones.
 
-Se enfoca en Google App engine con Java, Portales web en Drupal,
-aplicaciones moviles.
+###Conclusión
 
-La nube es como un mainframe.
+La charla tuvo puntos interesantes y aunque el presentador reitero
+ventajas de usar la nube que hemos aprendido en la asignatura, podía haber sido
+mejor. Me hubiera gustado si el presentador hubiera hecho algo más práctica, como
+presentar como trabaja Google App Engine, o el mismo producto Nubbius, para
+el estudiante se puede llevar a casa algo que puede usar en un futuro.
 
-Los proyectos webs
 
-Lo que se necesita para hacer un proyecto web.
-1. Análisis ->  Estructurar lo que se tiene que hacer.
-2. Diseño -> Wireframes
-3. Prototipo -> Pantallazos
-  -> Identificaar requisitos tecnicos para implementaciones.
-  -> Crear planes detallados para una estructura.
-4. Implementación
-    -> Codificacion
-    -> Testing
 
-De la idea a la aplicación
 
-Arquitectura de la información -> Esquemas Wireframes -> Pantallazos Diseño
--> Maqueta HTML -> Desarrollo en servidor
 
-Herramienta para wireframing: Balsamiq
-
-La identidad visual es muy importante. Para el cliente es
-importante.
-
-La nube, cloud computing "es un sistema operativo".
-
--> gestiona los recusos de hardware
--> proveede servicios
-
-"MaaS" -> Middleware as a Service
-
-Beneficios
--> fiable y seguro ademas de suponer un ahorro de costes
--> Infraestructura escalable.
--> "democratización" de los sistemas de informacion para las empresas
--> BYOD
-
-Se tiene que tener en cuenta la seguridad, privacidad, y legalidad
-
-nubbius esta creado con Java.
-Google WebToolKit (GWT) BBDD NO SQL
-Jquery mobile
-Webservice Rest
-
-La mayoria de las aplicaciones son hibridas.
-
-"Develop a robust, scalable application to enable lawyers to manage their clients"
-
-Google Computer Engine (IaaS)
+[1]: http://balsamiq.com/‎
