@@ -71,7 +71,7 @@ Además introdujo el IaaS que tiene Google, Google Computer Engine.
 
 La charla tuvo puntos interesantes y aunque el presentador reitero
 ventajas de usar la nube que hemos aprendido en la asignatura, podía haber sido
-mejor. Me hubiera gustado si el presentador hubiera hecho algo más práctica, como
+mejor. Me hubiera gustado si el presentador hubiera hecho algo más práctico, como
 presentar como trabaja Google App Engine, o el mismo producto Nubbius, para
 el estudiante se puede llevar a casa algo que puede usar en un futuro.
 
