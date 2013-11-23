@@ -4,9 +4,25 @@ Clase de 15 de Noviembre
 Ejercicios
 ----------
 
-    5. Instalar juju y, usándolo, instalar MediaWiki en un táper.
+    5. Comparar las prestaciones de un servidor web en una jaula y el mismo sevidor en un contenedor.
+    6. Instalar juju y, usándolo, instalar MediaWiki en un táper.
 
-###5.
+###5. 
+
+> Antes de crear la jaula y el contenedor que contendrá `nginx`, es importante 
+destacar que los contenedores tienen una ventaja sobre las jaulas en terminos del
+aislamiento de recursos y la posibilidad de manejarlos. Las jaulas, en vez, comparten los 
+recursos con el sistema anfitrion.
+> Usando la herramienta de prestaciones web conocida como `ab`, se compara una jaula contra un contenedor.
+
+El contenedor se crea usando `lxc`, mientras que la creación de la jaula se hace usando `debootstrap`.
+Se crearan máquinas que emplean el mismo sistema operativo y caracteristicas similares.
+
+```sh
+sudo lxc-create -t debian -n Debian
+```
+
+###6.
 
 > Para instalar juju, hay que agregar el repositorio correspondiente.
 
