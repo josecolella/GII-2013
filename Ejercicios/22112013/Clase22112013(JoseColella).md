@@ -94,20 +94,23 @@ la siguiente imagen.
 
 > !["Instalación de virt-install"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/installvirtinstall.png)
 
-> Después de ser instalado, hay que usar una imagen de disco localizado en /var/lib/libvrt/images.
-En mi caso me he descagado la .iso de arch-linux.
-
->Después de descargar la .iso hay que moverse en el directorio de imagenes de libvirt.
+> Después de ser instalado, hay que descargarse una iso del sistema operativo que se quiere virtualizar, 
+y ponerla en el directorio /var/lib/libvrt/images.
 
 > ```sh
 sudo mv ~/Downloads/archlinux-2013.11.01-dual.iso /var/lib/libvirt/images/
 ```
+> Hay dos opciones al momento de instalar la máquina virtual. Se puede usar la linea de comando 
+para su creación con `virt-install` o se puede usar una herramienta con interfaz gráfica denotada 
+`virt-manager`. Yo he optado por la instación por linea de comando.
 
 > Para poder usar virt-install hay que especificar el nombre, la cantidad de ram,
 el lugar de la imagen de disc, el lugar de la iso que se puede expresar en http,
 ftp o cdrom. Además he especificado una opción para visualizarla (vnc).
 
-> Primero hay que instalar virt-viewer.
+> Primero hay que instalar virt-viewer, que sirve para instalar una consola virtual 
+en el sistema guest y exportarlo en la máquina anfitriona. De esta manera tenemos una interfaz
+gráfica para poder instalar la máquina virtual.
 
 > !["Instación de virt-viewer para visualizar la máquina virtual"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/virt-viewer.png)
 
