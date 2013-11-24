@@ -94,21 +94,22 @@ la siguiente imagen.
 
 > !["Instalación de virt-install"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/installvirtinstall.png)
 
-> Después de ser instalado, hay que descargarse una iso del sistema operativo que se quiere virtualizar, 
+> Después de ser instalado, hay que descargarse una iso del sistema operativo que se quiere virtualizar,
 y ponerla en el directorio /var/lib/libvrt/images.
 
 > ```sh
 sudo mv ~/Downloads/archlinux-2013.11.01-dual.iso /var/lib/libvirt/images/
 ```
-> Hay dos opciones al momento de instalar la máquina virtual. Se puede usar la linea de comando 
-para su creación con `virt-install` o se puede usar una herramienta con interfaz gráfica denotada 
-`virt-manager`. Yo he optado por la instación por linea de comando.
+> Hay dos opciones al momento de instalar la máquina virtual. Se puede usar la linea de comando
+para su creación con `virt-install` o se puede usar una herramienta con interfaz gráfica denotada
+`virt-manager`. Yo he optado por la instación por linea de comando. Al final he instalado
+`virt-manager`, también, para poder gestionar todas las máquinas creadas.
 
 > Para poder usar virt-install hay que especificar el nombre, la cantidad de ram,
 el lugar de la imagen de disc, el lugar de la iso que se puede expresar en http,
 ftp o cdrom. Además he especificado una opción para visualizarla (vnc).
 
-> Primero hay que instalar virt-viewer, que sirve para instalar una consola virtual 
+> Primero hay que instalar virt-viewer, que sirve para instalar una consola virtual
 en el sistema guest y exportarlo en la máquina anfitriona. De esta manera tenemos una interfaz
 gráfica para poder instalar la máquina virtual.
 
@@ -122,3 +123,31 @@ que se visualiza en la siguiente imagen.
 > Al final de ejecutar dicho comando, se visualiza lo que se ve en la siguiente imagen.
 
 > !["Arch-linux"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/virt-installarch.png)
+
+> Si se opta por usar `virt-manager` para la instalación y gestión de las máquinas
+virtuales, la interfaz que proporciona es bastante robusta.
+
+> Para instalarlo hay que ejecutar el siguiente comando:
+
+> ```sh
+sudo apt-get install virt-manager
+>```
+
+> En la siguientes se pueden ver los pasos para crear la máquina virtual
+
+> - Se elige el nombre de la máquina virtual y se especifíca que se usa
+un iso para la instalación.
+
+> !["Elegir un nombre e iso"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/virtmanagerinstall.png)
+
+> - Se elige la cantidad de RAM y CPU que se usará la máquina virtual.
+
+> !["Elegir cantidad de RAM y CPU"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/vmramcpu.png)
+
+> - Se elige la cantidad de disco que usará el disco.
+
+> !["Elegir cantidad de disco"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/disk.png)
+
+> - Se elige la configuración de red para la máquina virtual.
+
+> !["Elegir configuración de red"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/network%20config.png)
