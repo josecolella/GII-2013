@@ -15,12 +15,43 @@ aislamiento de recursos y la posibilidad de manejarlos. Las jaulas, en vez, comp
 recursos con el sistema anfitrion.
 > Usando la herramienta de prestaciones web conocida como `ab`, se compara una jaula contra un contenedor.
 
-El contenedor se crea usando `lxc`, mientras que la creación de la jaula se hace usando `debootstrap`.
-Se crearan máquinas que emplean el mismo sistema operativo y caracteristicas similares.
+> Usando uno de los contenedores y jaulas creadas se pueden comparar las prestaciones usando `ab`.
+Para el contenedor, he usado el ubuntu-cloud que se ha instalado anteriormente.
 
-```sh
-sudo lxc-create -t debian -n Debian
+> ```sh
+sudo lxc-start -n nubecilla
 ```
+
+> Si no esta instalado `nginx` y `ab` hay que instalarlos.
+
+> ```sh
+sudo apt-get install nginx
+sudo apt-get install apache2-utils
+```
+
+> Después de instalar dichos paquetes se usará `ab` para medir el rendimiento
+Se ha usado `ab` con la opción -n y -c, que denotan el número de peticiones a crear y
+la concurrencia de dichas peticiones.
+
+> En la siguiente imagen, se puede ver que se generan 10000 peticiones que se hacen 50 en 50 para el localhost
+en el contenedor.
+
+> !["ab contra el contenedor"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/Ejercicio5Container.png)
+
+> Ahora para la jaula, he usado una jaula que contiene el sistema operativo `Debian Wheezy`. Para entrar en dicha 
+jaula se usa
+
+> ```sh
+sudo chroot /home/jaulas/wheezy
+```
+
+> Ya dentro de la jaula, se instala `ab` con el mismo comando que se ha usado par el contenedor.
+Despues de ser instalado, se usan los mismos parametros para obtener las prestaciones de la jaula.
+En la siguiente imagen, se puede ver el resultado de la jaula.
+
+> !["ab contra la jaula"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema3Screenshots/Ejercicio5Jail.png)
+
+> No se pueden obtener conclusiones en concreta de estos tests. La jaula tuviera que ser más rápida ya que comparte los recursos de la máquina anfitriona, mientras que los contenedor tiene sus recursos aislados, con un puente de red hacia el anfitrion. 
 
 ###6.
 
