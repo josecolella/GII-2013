@@ -29,7 +29,7 @@ José Miguel Colella
 
 ###Ejercicio 2
 
-Para este ejercicio se ha usado un contenedor de ubuntu que se habia creado anteriormente con `lxc`.
+Para este ejercicio se ha usado un contenedor de ubuntu que se había creado anteriormente con `lxc`.
 
 ```sh
 sudo lxc-start -n una-caja
@@ -43,8 +43,7 @@ sudo apt-get install sshfs fuse
 
 Antes de seguir es importante conocer el IP de la maquina remota para poder crear un fichero en remoto. En mi caso la maquina remota tiene IP, 10.0.3.185.
 
-Antes de mapear el directorio remoto con uno en local, hay que agregar el usuario al grupo de usuario de fuse. Esto se hace usando el comando 
-```usermod```. 
+Antes de mapear el directorio remoto con uno en local, hay que agregar el usuario al grupo de usuario de fuse. Esto se hace usando el comando `usermod`. 
 
 ```sh
 sudo usermod -a -G fuse josecolella
