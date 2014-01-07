@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # Author: Jose Miguel Colella
 # https://github.com/WindowsAzure/azure-sdk-for-python
