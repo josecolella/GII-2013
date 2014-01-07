@@ -232,3 +232,164 @@ sudo mount -t ceph ubuntu:/ /mnt/ceph
 
 >En la siguiente imagen se puede ver la creación de un objeto.
 ![""](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/radosput.png)
+
+###Ejercicio 8
+
+    Tras crear la cuenta de Azure, instalar las herramientas
+    de línea de órdenes (Command line interface, cli) del mismo y
+    configurarlas con la cuenta Azure correspondiente
+
+
+> Después de haberse creado una cuenta en **http://www.windowsazurepass.com/**
+lo primero que hay que hacer es instalar la herramienta de linea
+de comandos que se descarga con `npm`.
+`npm` es el gestor de modulo para `nodejs`, que es el javascript de server-side.
+
+> En la siguiente imagen, se puede ver la instalación del modulo
+
+!["Instalación de azure-cli"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/npmazurecli.png)
+
+Ya descargada la herramienta de linea de comando, hay que bajarse un fichero
+.publishsettings que contiene información sobre la cuenta del usuario.
+
+Esto se descarga usando el siguiente comando:
+
+```sh
+azure account download
+```
+
+Después de descargar el fichero se tiene que importar.
+En la siguiente imagen se puede ver como se importa la configuración en la herramienta
+de cliente.
+
+!["Importar configuración"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/azureimport.png)
+
+Ahora se crea la instancia de almacenamiento.
+
+!["Creación de storage"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/createstorage.png)
+
+Para poder interactuar con el contenedor hay que insertar las llaves de acceso
+de dicho contenedor como variables del terminal. Para ver las llaves se
+ejecuta el siguiente comando:
+
+```sh
+azure storage account keys list ivphotostorage
+```
+
+En la siguiente imagen se puede ver que se ha insertado dos variables que
+denotan el nombre de la cuenta y la llave de la cuenta.
+
+!["bash_profile"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/bashprofile.png)
+
+
+###Ejercicio 9
+
+    Crear varios contenedores en la cuenta usando la
+    línea de órdenes para ficheros de diferente tipo
+    y almacenar en ellos las imágenes en las que capturéis
+    las pantallas donde se muestre lo que habéis hecho.
+
+Primero se crea un blob que se usará para subir las fotos. En la siguiente imagen, se puede ver la creación de
+dicho blob.
+
+!["Crear Blob"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/creatingBlob.png)
+
+Cada blob tiene su url para acceder a ella. En la siguiente imagen se puede ver la url de dicho blob.
+
+!["Url del Blob"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/bloburl.png)
+
+Ahora que se tiene la url, ya se puede subir los ficheros a dicha url.
+En la siguiente imagen, se puede ver como se sube una imagen al blob.
+
+!["Upload 1"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/upload1.png)
+
+Como se puede ver en la siguiente imagen, el upload de dicha imagen se ha hecho correctamente.
+
+!["Successful Upload"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/sucessfulupload.png)
+
+He subido otra imagen en dicho blob. En la siguiente imagen, se ve el comando ejecutado
+para subir la imagen
+
+!["Upload 2"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/upload2.png)
+
+Como se puede ver en la siguiente imagen, se ha subido correctamente la imagen, ya
+que se puede visualizar con una url
+
+!["Successful Upload 2"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/successfulupload2.png)
+
+Para finalizar que creado otra blob que servirá para guardar ficheros de texto.
+En la siguiente imagen, se puede ver como se crea el blob.
+
+!["Crear Blob 2"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/createblob2.png)
+
+
+###Ejercicio 10
+
+    Desde un programa en Ruby o en algún otro lenguaje, listar los blobs que
+    hay en un contenedor, crear un fichero con la lista de los mismos y
+    subirla al propio contenedor.
+
+Yo he optado por hacer este programa con `python`. Azure tiene una API para python
+que se puede descargar con `pip`. En la siguiente imagen se puede ver la descarga
+e instalación del modulo que sirve como interfaz para interactuar con azure.
+
+!["pip install"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/pipazure.png)
+
+El código para poder listar los contenedores, los blobs y crear un fichero con
+
+```python
+# -*- coding: utf-8 -*-
+# Author: Jose Miguel Colella
+# https://github.com/WindowsAzure/azure-sdk-for-python
+
+# Desde un programa en Ruby o en algún otro lenguaje,
+# listar los blobs que hay en un contenedor,
+# crear un fichero con la lista de los mismos y
+# subirla al propio contenedor.
+
+import credentials  # Contiene información sensible
+from azure.storage import BlobService
+
+
+def getContainersWithBlobs(blob_service):
+    """
+    Imprime los contenedores del usuario con los correspondientes
+    blobs.
+
+    blob_service: Nombre del servicio de gestion de blobs @class BlobService
+    """
+    for i in blob_service.list_containers().containers:
+        print("Nombre del contenedor: {}".format(i.name))
+        print("Url del contenedor: {}".format(i.url))
+        print("##############################")
+        for j in blob_service.list_blobs(i.name).blobs:
+            print("\tNombre del Blob: {}".format(j.name))
+            print("\tUrl del Blob: {}".format(j.url))
+            print("\t------------------------------")
+
+#Conexion con el servicio
+blob_service = BlobService(credentials.account_name, credentials.account_key)
+
+#Visualizar los contenedores y blobs
+getContainersWithBlobs(blob_service)
+
+# Escribir a fichero
+f_blob = open('Ejercicio10.txt', "w")
+for i in blob_service.list_containers().containers:
+        f_blob.write("Nombre del contenedor: {}".format(i.name))
+        f_blob.write("Url del contenedor: {}".format(i.url))
+        f_blob.write("##############################")
+        for j in blob_service.list_blobs(i.name).blobs:
+            f_blob.write("\tNombre del Blob: {}".format(j.name))
+            f_blob.write("\tUrl del Blob: {}".format(j.url))
+            f_blob.write("\t------------------------------")
+f_blob.close()
+
+# Se pone en el blob
+blob_service.put_blob('code', 'f_blob.txt', f_blob, 'BlockBlob')
+```
+
+En la siguiente imagen se puede ver la ejecución del programa, y el
+resultado. Se ven los contenedores y blobs.
+
+!["Ejercicio 10"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema4Screenshots/Ejercicio10.png)

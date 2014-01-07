@@ -29,7 +29,6 @@ def getContainersWithBlobs(blob_service):
 
 blob_service = BlobService(credentials.account_name, credentials.account_key)
 
-blob_service.delete_blob('code', 'f_blob.py')
 getContainersWithBlobs(blob_service)
 
 
