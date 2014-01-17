@@ -148,3 +148,37 @@ Como podemos ver en la siguiente imagen, se ha instalado el emacs con éxito.
 ##Ejercicio 3
     Escribir en YAML la siguiente estructura de datos en JSON
     { 'uno': 'dos', 'tres': [ 4, 5, 'Seis', { 'siete': 8, 'nueve': [Object] } ] }
+
+La representación en yaml de dicha estructura de datos es muy similar a la que se
+visualiza en forma json. Un aspecto importante es que yaml no require el uso
+de comillas para denotar los valores de la estructura de datos.
+
+A continuación se puede ver como se representaría en forma YAML.
+
+```yaml
+--- # Bloque indentado
+uno :   dos
+tres :
+    - 4
+    - 5
+    - Seis
+    - siete: 8
+    - nueve:
+      - Object
+---
+```
+
+Como se puede ver los arrays asociativos o diccionarios se representan de la
+siguiente manera `llave : valor`. Las listas se denotan como:
+
+```yaml
+---
+- valor1
+- valor2
+---
+```
+
+Y se pueden combiar las dos notaciones para obtener diccionarios
+que tiene listas como valores, como esta en la estructura de datos de json
+que se tiene que modelar.
+
