@@ -212,6 +212,7 @@ Después hay que exponerlo para poder usarlo. Esto se hace usando:
 
 ```bash
 sudo juju expose juju-gui
+```
 
 Ahora que tenemos la interfaz, se puede acceder mediante un cliente
 web. En mi caso la url es https://juju-azure-s7hyocf897.cloudapp.net/
