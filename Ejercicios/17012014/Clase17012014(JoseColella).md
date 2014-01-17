@@ -8,9 +8,15 @@ José Miguel Colella
 ##Ejercicio 1
     Instalar chef en la máquina virtual que vayamos a usar
 
+Para instalar chef hay que asegurarse de que el sistema tenga
+Ruby. Se instala Ruby con el siguiente comando:
+
 ```bash
 sudo apt-get install -y ruby1.9.1 ruby1.9.1-dev rubygems
 ```
+
+Ahora que tenemos instalado Ruby, se usa el gestor de modulos
+de Ruby,`gem`, para instalar los modelos necesarios.
 
 ```bash
 sudo gem install ohai chef
