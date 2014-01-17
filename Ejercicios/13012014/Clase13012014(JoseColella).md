@@ -212,7 +212,6 @@ Después hay que exponerlo para poder usarlo. Esto se hace usando:
 
 ```bash
 sudo juju expose juju-gui
-```
 
 Ahora que tenemos la interfaz, se puede acceder mediante un cliente
 web. En mi caso la url es https://juju-azure-s7hyocf897.cloudapp.net/
@@ -241,11 +240,3 @@ el puerto 80 o 8080:
 
 ###Ejercicio 7
     Instalar una máquina virtual Ubuntu 12.04 para el hipervisor que tengas instalado.
-
-###Ejercicio 8
-
-
-
-###Ejercicio 9
-
-###Ejercicio 10
