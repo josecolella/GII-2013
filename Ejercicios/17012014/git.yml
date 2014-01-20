@@ -1,0 +1,9 @@
+---
+- hosts: azure
+  sudo: yes
+  tasks:
+    - name: Update Apt cache
+      apt: update_cache=yes
+
+    - name: Update git
+      apt: pkg=git state=present

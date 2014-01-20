@@ -179,13 +179,13 @@ A continuación se puede ver como se representaría en forma YAML.
 
 ```yaml
 --- # Bloque indentado
-  tres: 
+  tres:
     - 4
     - 5
     - "Seis"
-    - 
+    -
       siete: 8
-      nueve: 
+      nueve:
         - "Object"
   uno: "dos"
 
@@ -206,9 +206,29 @@ Y se pueden combiar las dos notaciones para obtener diccionarios
 que tiene listas como valores, como esta en la estructura de datos de json
 que se tiene que modelar.
 
-##Ejercicio 4
+##Ejercicio 4 y Ejercicio 5
+      * Desplegar los fuentes de la aplicación de DAI o cualquier
+      otra aplicación que se encuentre en un servidor git público
+      en la máquina virtual Azure (o una máquina virtual local)
+      usando ansible. Desplegar la aplicación de DAI con
+      todos los módulos necesarios usando un playbook de Ansible.
 
-Lo primero que hay que hacer es subir la llave pública de la máquina anfitriona
+      * ¿Ansible o Chef? ¿O cualquier otro que no hemos usado aquí?.
+
+Hay que instalar ansible en el servidor. Usando ssh se entra dentro de
+la máquina y se usa el siguiente comando:
+
+!["Pip install ansible"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema6Screenshots/pipinstallansible.png)
+
+En la máquina anfitriona se agrega el dominio del la máquina servidora,
+con el grupo correspondiente.
+
+```
+[azure]
+ivmachine2.cloudapp.net
+```
+
+Hay que hacer es subir la llave pública de la máquina anfitriona
 a la máquina de azure. Con el siguiente comando se sube la llave
 
 ```bash
@@ -221,32 +241,42 @@ Se hace ssh a la máquina con:
 ssh josecolella@ivmachine2.cloudapp.net
 ```
 
-sudo mkdir -p /etc/ansible/hosts
 
+Vamos a la aplicación almacenada en Github y agregamos la llave publica del
+servidor para acceso ssh.
 
-```bash
-[azure]
-ivmachine2.cloudapp.net
-```
-
-
-Vamos a la aplicación almacenada en Github y hacemos `Deploy keys`, y agregamos
-la llave publica del servidor.
 En el servidor
 
 ```bash
 ssh-keygen -t rsa
 ```
 
-En el primero ponemos el bloque de servidores en el que vamos a actuar,
-en el segundo si hace falta hacer sudo o no y en el tercero las tareas
-que vamos a ejecutar, en este caso una sola.
+!["Github add keys"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema6Screenshots/addpubkey.png)
 
-Hay que conectarse previamente a git o sino no se podrá desplegar la aplicación
+Ahora se instala git usando ansible. Se crea el siguiente playbook.
+
+```yaml
+---
+- hosts: azure
+  sudo: yes
+  tasks:
+    - name: Update Apt cache
+      apt: update_cache=yes
+
+    - name: Update git
+      apt: pkg=git state=present
+```
+
+Ahora que el servidor tiene git instalado ya se puede usar el siguiente comando
+para descargarse la aplicación. Hay que conectarse previamente a git o sino no se podrá desplegar la aplicación
 
 ```bash
 ansible azure -m git -a "repo=git@github.com:josecolella/DAI_Practica4.git dest=~/ version=HEAD"
 ```
+
+Ahora se crea un playbook que instala todos los modulos necesarios
+para ejecutar la aplicación de python. Estos incluyen web.py, mako,
+pymongo, tweepy, y feedparser
 
 ```yaml
 ---
@@ -272,7 +302,7 @@ Para poder ejecutar la aplicación he tenido que usar en el playbook acciones
 Si se accede al sitio http://ivmachine2.cloudapp.net, se puede ver que el sitio
 esta activo. Se ha configurado con éxito
 
-Comparando Chef y Ansible
+#Comparando Chef y Ansible
 
 Ansible es mucho más flexible al momento de usarla. No es tan rigido con
 los directorios como Chef. Además tienes la flexibilidad de que puedes ejecutar
@@ -325,6 +355,7 @@ de `mc`.
 El tiempo de ejecución 2.777s
 
 ##Ejercicio 6
+    Instalar una máquina virtual Debian usando Vagrant y conectar con ella.
 
 Primero hay que agregar la box que se usará como distribución. Usando el sitio web
 que proporciona los [enlaces][2] a las boxes, la distribución de debian se puede conseguir
@@ -336,10 +367,13 @@ Usando el siguiente comando se puede instalar la máquina.
 vagrant box add Debian https://dl.dropboxusercontent.com/s/xymcvez85i29lym/vagrant-debian-wheezy64.box
 ```
 
+!["Vagrant box"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema6Screenshots/vagrantboxadd.png)
+
 Hay que cambiar el fichero de configuración conocido como `Vagrantfile`
 para que arranque la box de Debian.
 Se tiene que cambiar las siguiente configuraciones.
 
+!["Config"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema6Screenshots/configchange.png)
 
 Lo que hace es descargarse la box del sitio proporcionado. Cuando haya terminado
 descargarse, se puede iniciar usando el comando:
@@ -348,6 +382,8 @@ descargarse, se puede iniciar usando el comando:
 vagrant up
 ```
 
+!["vagrant up"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema6Screenshots/vagrantup.png)
+
 Esto inicializa la máquina, abriendo el puerto 22 para conexión remota desde
 la máquina anfitriona. Para poder conectarse remotamente a la máquina se usa
 el siguiente comando:
@@ -355,6 +391,11 @@ el siguiente comando:
 ```bash
 vagrant ssh
 ```
+!["Vagrant ssh"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema6Screenshots/vagrantssh.png)
+
+En la siguiente imagen se comprueba la distribución
+
+!["vagrant distro"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema6Screenshots/vagrantdistro.png)
 
 Vagrant es un excelente mecanismo para desarrollo ya que se puede configurar
 para tener cualquier entorno, y además proporciona flexibilidad al momento

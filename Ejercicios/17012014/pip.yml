@@ -1,0 +1,15 @@
+---
+- hosts: azure
+  sudo: yes
+  tasks:
+    - name: Pip install
+      apt: name=python-pip state=present
+    - name: Install essential packages
+      apt: name=python-dev state=present
+      apt: name=build-essential state=present
+    - name: Install Python Modules for Application
+      command: easy_install web.py tweepy mako pymongo feedparser
+    - name: Deploying Application
+      command: chdir=/home/josecolella/repo nohup python index.py 80 &
+      async: 45
+      poll: 0
