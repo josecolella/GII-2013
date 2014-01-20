@@ -168,9 +168,10 @@ tres :
     - 4
     - 5
     - Seis
-    - siete: 8
-    - nueve:
-      - Object
+    - 
+      siete: 8
+      nueve: 
+        - "Object"
 ---
 ```
 
