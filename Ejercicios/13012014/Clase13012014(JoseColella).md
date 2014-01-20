@@ -73,13 +73,43 @@ es el mismo que se ha especificado.
 
 !["Disco"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema5Screenshots/recognizedDisk.png)
 
-* He usado Parallels para instalar Debian
+* He usado VirtualBox para instalar Debian
 
 ###Ejercicio 3
+    Crear un benchmark de velocidad de entrada salida y comprobar la diferencia entre usar paravirtualización y arrancar la máquina virtual simplemente con
+    qemu-system-x86_64 -hda /media/Backup/Isos/discovirtual.img
+
 
 ###Ejercicio 4
     Crear una máquina virtual Linux con 512 megas de RAM y
     entorno gráfico LXDE a la que se pueda acceder mediante VNC y ssh
+
+Hay que instalar un cliente vnc que proporciona conectarse con la máquina virtual que se va a crear.
+
+```bash
+sudo apt-get install vinagre
+```
+
+Primero para crear la máquina virtual con 512 MB de RAM se usa la opción -m.
+
+```bash
+qemu-system-x86_64 -hda deb.img -cdrom ~/Downloads/debian-7.3.0-amd64-netinst.iso  -m 512M -name Debian
+```
+
+Después que haya sido creada, para poder usar vnc y ssh hay que especificarlo en las opciones.
+
+```bash
+qemu-system-x86_64 -boot -hda deb.img -name Debian -vnc:1 -redir tcp:2222::22
+```
+
+Para poder conectarse hay que averiguar el IP que se asigna, usando 
+
+```bash
+ifconfig
+```
+
+Ya sabiendo el IP se puede conectar mediante ssh
+
 
 ###Ejercicio 5
     Crear una máquina virtual ubuntu e instalar en ella un
@@ -241,3 +271,20 @@ el puerto 80 o 8080:
 
 ###Ejercicio 7
     Instalar una máquina virtual Ubuntu 12.04 para el hipervisor que tengas instalado.
+
+
+Lo primero que hay que hacer es descargarnos los paquetes necesarios.
+Usando el siguiente comando:
+
+```bash
+sudo apt-get install ubuntu-vm-builder kvm virt-manager
+```
+
+Ahora usando `vmbuilder` se puede especificar la distribucion, el destino
+del disco, el nombre de la maquina virtual, y el dominio.
+
+```bash
+sudo vmbuilder kvm ubuntu --suite precise --flavour server -o --dest ~/Desktop/Ubuntu.vdi --hostname iv --domain iv 
+```
+
+Usando la imagen creada con dicha orden se puede montar sobre Oracle Virtualbox para que se pueda usar, o con qemu.
