@@ -163,15 +163,16 @@ A continuación se puede ver como se representaría en forma YAML.
 
 ```yaml
 --- # Bloque indentado
-uno :   dos
-tres :
+  tres: 
     - 4
     - 5
-    - Seis
+    - "Seis"
     - 
       siete: 8
       nueve: 
         - "Object"
+  uno: "dos"
+
 ---
 ```
 
