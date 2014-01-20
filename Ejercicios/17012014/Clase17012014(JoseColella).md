@@ -145,6 +145,22 @@ Como podemos ver en la siguiente imagen, se ha instalado el emacs con éxito.
 !["Version Emacs"](https://raw.github.com/josecolella/GII-2013/master/Screenshots/Tema6Screenshots/emacsVersion.png)
 
 
+Las tres recetas en conjunto serían
+
+```ruby
+package 'emacs'
+package 'nginx'
+directory '/home/vagrant/Desktop/'
+file "/home/vagrant/Desktop/project" do
+  owner "vagrant"
+  group "vagrant"
+  mode 00544
+  action :create
+  content "Creado nginx"
+end
+```
+
+
 ##Ejercicio 3
     Escribir en YAML la siguiente estructura de datos en JSON
     { 'uno': 'dos', 'tres': [ 4, 5, 'Seis', { 'siete': 8, 'nueve': [Object] } ] }
@@ -182,3 +198,163 @@ Y se pueden combiar las dos notaciones para obtener diccionarios
 que tiene listas como valores, como esta en la estructura de datos de json
 que se tiene que modelar.
 
+##Ejercicio 4
+
+Lo primero que hay que hacer es subir la llave pública de la máquina anfitriona
+a la máquina de azure. Con el siguiente comando se sube la llave
+
+```bash
+ssh-copy-id -i ~/.ssh/id_rsa.pub josecolella@ivmachine2.cloudapp.net
+```
+
+Se hace ssh a la máquina con:
+
+```bash
+ssh josecolella@ivmachine2.cloudapp.net
+```
+
+sudo mkdir -p /etc/ansible/hosts
+
+
+```bash
+[azure]
+ivmachine2.cloudapp.net
+```
+
+
+Vamos a la aplicación almacenada en Github y hacemos `Deploy keys`, y agregamos
+la llave publica del servidor.
+En el servidor
+
+```bash
+ssh-keygen -t rsa
+```
+
+En el primero ponemos el bloque de servidores en el que vamos a actuar,
+en el segundo si hace falta hacer sudo o no y en el tercero las tareas
+que vamos a ejecutar, en este caso una sola.
+
+Hay que conectarse previamente a git o sino no se podrá desplegar la aplicación
+
+```bash
+ansible azure -m git -a "repo=git@github.com:josecolella/DAI_Practica4.git dest=~/ version=HEAD"
+```
+
+```yaml
+---
+- hosts: azure
+  sudo: yes
+  tasks:
+    - name: Pip install
+      apt: name=python-pip state=present
+    - name: Install essential packages
+      apt: name=python-dev state=present
+      apt: name=build-essential state=present
+    - name: Install Python Modules for Application
+      command: easy_install web.py tweepy mako pymongo feedparser
+    - name: Deploying Application
+      command: chdir=/home/josecolella/repo nohup python index.py 80 &
+      async: 45
+      poll: 0
+```
+
+Para poder ejecutar la aplicación he tenido que usar en el playbook acciones
+[asincronas][1], para poder mantener las conexiones abiertas
+
+Si se accede al sitio http://ivmachine2.cloudapp.net, se puede ver que el sitio
+esta activo. Se ha configurado con éxito
+
+Comparando Chef y Ansible
+
+Ansible es mucho más flexible al momento de usarla. No es tan rigido con
+los directorios como Chef. Además tienes la flexibilidad de que puedes ejecutar
+ansible desde afuera mientras que chef tiene que tener las recetas adentro.
+Chef es más rápido que Ansible pero Ansible es más flexible con su facil
+gestión de multiples máquinas. El sintaxis de Chef es un poco más claro que
+el que usa Ansible.
+
+Voy a comparar tiempo de ejecución para instalar el paquete conocido como `mc`.
+
+###Ansible
+
+He creado un playbook para ansible y he recabado el tiempo de ejecución
+
+```yaml
+---
+- hosts: azure
+  sudo: yes
+  tasks:
+    - name: Update mc
+      apt: pkg=mc state=present
+```
+
+La ejecución con:
+
+```bash
+ansible-playbook -i /etc/ansible/hosts mc.yml
+```
+
+Ha tomado unos 20.181 segundos en ejecutar
+
+###Chef
+
+He creado una receta para la instalación de `mc` para chef.
+La receta es la siguiente:
+
+```ruby
+package 'mc'
+```
+
+Hay que cambiar el node.json para que sepa que hay que ejecutar la receta
+de `mc`.
+
+```json
+{
+  "run_list": [ "recipe[mc]" ]
+}
+```
+
+El tiempo de ejecución 2.777s
+
+##Ejercicio 6
+
+Primero hay que agregar la box que se usará como distribución. Usando el sitio web
+que proporciona los [enlaces][2] a las boxes, la distribución de debian se puede conseguir
+en el siguiente enlace https://dl.dropboxusercontent.com/s/xymcvez85i29lym/vagrant-debian-wheezy64.box
+
+Usando el siguiente comando se puede instalar la máquina.
+
+```bash
+vagrant box add Debian https://dl.dropboxusercontent.com/s/xymcvez85i29lym/vagrant-debian-wheezy64.box
+```
+
+Hay que cambiar el fichero de configuración conocido como `Vagrantfile`
+para que arranque la box de Debian.
+Se tiene que cambiar las siguiente configuraciones.
+
+
+Lo que hace es descargarse la box del sitio proporcionado. Cuando haya terminado
+descargarse, se puede iniciar usando el comando:
+
+```bash
+vagrant up
+```
+
+Esto inicializa la máquina, abriendo el puerto 22 para conexión remota desde
+la máquina anfitriona. Para poder conectarse remotamente a la máquina se usa
+el siguiente comando:
+
+```bash
+vagrant ssh
+```
+
+Vagrant es un excelente mecanismo para desarrollo ya que se puede configurar
+para tener cualquier entorno, y además proporciona flexibilidad al momento
+de crear, configurar, y destruir. Para ir un workflow moderno debería incluir
+Vagrant como herramienta de desarrollo, usando la nube para el despliegue.
+
+
+
+
+[1]: http://docs.ansible.com/playbooks_async.html
+[2]:http://www.vagrantbox.es/
