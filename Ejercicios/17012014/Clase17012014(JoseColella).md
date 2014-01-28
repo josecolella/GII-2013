@@ -403,6 +403,108 @@ de crear, configurar, y destruir. Para ir un workflow moderno debería incluir
 Vagrant como herramienta de desarrollo, usando la nube para el despliegue.
 
 
+##Ejercicio 7
+    Crear un script para provisionar `nginx` o cualquier otro servidor
+    web que pueda ser útil para alguna otra práctica
+
+Se configura el Vagrantfile para que pueda instalar el paquete `nginx` desde la linea de comando
+
+A continuación podemos ver como se configura el Vagrantfile para poder instalar
+nginx en la máquina. He optado por el provisionador `chef-solo`
+
+Para instalar la nginx con chef hay que crear los directorios necesatios.
+
+```bash
+mkdir -p cookbooks/nginx/recipes/
+```
+
+Dentro de dicho directorio he creado un fichero `default.rb`
+
+```ruby
+package 'nginx'
+```
+
+Para el fichero Vagrantfile he puesto lo siguiente
+
+```ruby
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "debian"
+
+  config.vm.provision "chef_solo" do |chef|
+    chef.add_recipe "nginx"
+  end
+end
+```
+
+Para usarlo hay que tener la máquina activa con:
+
+```bash
+vagrant up
+```
+
+Y después se usa:
+
+```bash
+vagrant provision
+```
+
+En la siguiente imagen se puede ver la ejecución:
+
+!["vagrant provision"](http://f.cl.ly/items/1f0s443Z2W2Y31041i0O/Screen%20Shot%202014-01-28%20at%2020.40.05.png)
+
+
+##Ejercicio 8
+    Configurar tu máquina virtual usando vagrant con el provisionador ansible
+
+
+```ruby
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian"
+  config.vm.network :private_network, ip: "192.168.111.222"
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "provisioning/playbook.yml"
+    ansible.inventory_path = "provisioning/ansible_hosts"
+  end
+end
+```
+
+
+Hay que ejecutar el comando `vagrant reload` para que cambie las configuraciones
+de la máquina. Además que hay que crear el fichero ansible_hosts que contendrá
+el grupo `vagrant`.
+
+```
+[vagrant]
+192.168.111.222
+```
+
+El fichero de provisionamiento es el siguiente
+
+```yaml
+---
+- hosts: vagrant
+  sudo: yes
+  tasks:
+    - name: Update cache
+      apt: update_cache=yes
+    - name: Install nginx
+      apt: pkg=nginx state=present
+    - name: Start nginx
+      service: pkg=nginx state=restarted
+    - name: Install emacs
+      apt: pkg=emacs state=present
+    - name: Install python3-dev
+      apt: pkg=python3-dev state=present
+```
+
+Para tratar que esto sirviera he tuvido muchos problemas con el grupo vagrant.
+Como vemos en la siguiente imagen, no ha podido hacer el provisionamiento
+
+!["No provisionamiento"](http://f.cl.ly/items/3r3V3H1a1U3Q350h0R2T/Screen%20Shot%202014-01-28%20at%2021.48.42.png)
 
 
 [1]: http://docs.ansible.com/playbooks_async.html
