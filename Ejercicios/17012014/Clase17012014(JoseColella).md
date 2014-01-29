@@ -458,6 +458,16 @@ En la siguiente imagen se puede ver la ejecución:
 ##Ejercicio 8
     Configurar tu máquina virtual usando vagrant con el provisionador ansible
 
+Lo primero que he hecho es crear un directorio `provisioning` donde
+voy a almacenar los playbooks. Dentro de dicho directorio he creado
+un `playbook.yml` que contiene los pasos a seguir en el provisionamiento
+de vagrant.
+
+Hay que indicarle a vagrant que tiene que usar ansible como sistema
+de provisionamiento. Esto se indica en el fichero `Vagrantfile`.
+A continuación podemos ver como se ha configurado el `Vagrantfile`.
+Además que se ha indicado el destino que indica los grupos que se le va
+aplicar dicho provisionamiento; `ansible.inventory_path`.
 
 ```ruby
 VAGRANTFILE_API_VERSION = "2"
@@ -465,17 +475,19 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure("2") do |config|
   config.vm.box = "debian"
   config.vm.network :private_network, ip: "192.168.111.222"
+  config.ssh.forward_agent = true
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "provisioning/playbook.yml"
     ansible.inventory_path = "provisioning/ansible_hosts"
+    ansible.verbose = 'vvvv'
   end
 end
 ```
 
 
-Hay que ejecutar el comando `vagrant reload` para que cambie las configuraciones
-de la máquina. Además que hay que crear el fichero ansible_hosts que contendrá
-el grupo `vagrant`.
+El fichero de inventario contiene el grupo y la dirección ip de dicha máquina.
+Esto significa que aplicará dicho provisionamiento a `192.168.111.222`. Dicho
+ip pertenece a la máquina que se ha creado con `Vagrantfile`
 
 ```
 [vagrant]
@@ -494,17 +506,42 @@ El fichero de provisionamiento es el siguiente
     - name: Install nginx
       apt: pkg=nginx state=present
     - name: Start nginx
-      service: pkg=nginx state=restarted
+      command: sudo service nginx start
     - name: Install emacs
       apt: pkg=emacs state=present
     - name: Install python3-dev
       apt: pkg=python3-dev state=present
 ```
 
-Para tratar que esto sirviera he tuvido muchos problemas con el grupo vagrant.
-Como vemos en la siguiente imagen, no ha podido hacer el provisionamiento
+Hay que ejecutar el comando `vagrant provision` para que cambie las configuraciones
+de la máquina. Además que hay que crear el fichero ansible_hosts que contendrá
+el grupo `vagrant`.
 
-!["No provisionamiento"](http://f.cl.ly/items/3r3V3H1a1U3Q350h0R2T/Screen%20Shot%202014-01-28%20at%2021.48.42.png)
+Lo que indica dicho fichero de provisionamiento es que se:
+  - Actualice la cache de paquetes
+  - Instale nginx
+  - Inicie el demonio de nginx
+  - Instale emacs
+  - Instale los paquetes de desarrollo de python3
+
+Cuando se ejecuta `vagrant provision` vemos lo siguiente:
+
+- Primero se hace la actualización de cache de paquetes
+
+!["vagrant provision"](http://f.cl.ly/items/0I1U3V0E0w2L1x1f2A3O/Screen%20Shot%202014-01-29%20at%2009.17.46.png)
+
+- Se instala nginx y se inicia el demonio
+
+!["instalar nginx"](http://f.cl.ly/items/1Q0k2o3F1S1F2d401m3F/Screen%20Shot%202014-01-29%20at%2009.19.38.png)
+
+- Se instala python3-dev y se ve el resultado del provisionamiento
+
+!["Finalidad del provisionamiento"](http://f.cl.ly/items/1y0q3V0I2r1J0f342j3k/Screen%20Shot%202014-01-29%20at%2009.20.34.png)
+
+Si accedemos al ip indicado anteriormente desde el navegador podemos ver que
+el servidor esta activo:
+
+!["nginx"](http://f.cl.ly/items/1i3K211z1n1j450H1t1u/Screen%20Shot%202014-01-29%20at%2009.23.05.png)
 
 
 [1]: http://docs.ansible.com/playbooks_async.html
