@@ -288,3 +288,4 @@ sudo vmbuilder kvm ubuntu --suite precise --flavour server -o --dest ~/Desktop/U
 ```
 
 Usando la imagen creada con dicha orden se puede montar sobre Oracle Virtualbox para que se pueda usar, o con qemu.
+
