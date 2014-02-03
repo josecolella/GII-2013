@@ -146,9 +146,6 @@ RUN     DEBIAN_FRONTEND=noninteractive apt-get install -q -y python-setuptools
 RUN     easy_install pip
 # Instalar git
 RUN     apt-get install -y git
-# Subir las llaves para usar ssh
-RUN     mkdir -p /root/.ssh/
-ADD     ~/.ssh/id_rsa /root/.ssh/id_rsa
 # Clono el repositorio
 RUN     git clone git@github.com:josecolella/DAI_Practica4.git
 #Instalar modulos de dependencia
